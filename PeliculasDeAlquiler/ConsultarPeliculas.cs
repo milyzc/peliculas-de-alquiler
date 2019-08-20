@@ -29,7 +29,6 @@ namespace PeliculasDeAlquiler
         {
             DgvPeliculas.Rows.Clear();
             var peliculas = _peliculasRepositorio.ObtenerPeliculasDT().Rows;
-            var filas = new List<DataGridViewRow>();
             foreach (DataRow pelicula in peliculas)
             {
                 if (pelicula.HasErrors)
@@ -44,10 +43,6 @@ namespace PeliculasDeAlquiler
 
                 DgvPeliculas.Rows.Add(fila);
             }
-            //DgvPeliculas.Columns[0].DisplayIndex = 0;
-            //DgvPeliculas.Columns[1].DisplayIndex = 1;
-            //DgvPeliculas.Columns[2].DisplayIndex = 2;
-            //DgvPeliculas.Update();
         }
     }
 }
