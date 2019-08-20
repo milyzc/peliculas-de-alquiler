@@ -27,7 +27,7 @@ namespace PeliculasDeAlquiler
 
         private void ActualizarPeliculas()
         {
-            // push desde aula 7
+            // push desde aula 7 genero conflicto
             DgvPeliculas.Rows.Clear();
             var peliculas = _peliculasRepositorio.ObtenerPeliculasDT().Rows;
             var filas = new List<DataGridViewRow>();
