@@ -1,4 +1,4 @@
-﻿USE [pav1-db]
+﻿USE [pav1-mili]
 GO
 ALTER TABLE [dbo].[Peliculas] DROP CONSTRAINT [FK_Peliculas_Generos]
 GO
