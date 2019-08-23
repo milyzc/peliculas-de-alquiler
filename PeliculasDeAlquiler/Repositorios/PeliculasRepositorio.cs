@@ -36,5 +36,15 @@ namespace PeliculasDeAlquiler.Repositorios
             //del SQL.
             return _BD.consulta(sqltxt);
         }
+        public DataTable ObtnerGeneros()
+        {
+            string sqltxt = "SELECT * FROM generos";
+            return _BD.consulta(sqltxt);
+        }
+        public DataTable ObtenerPeliculasDTFiltros(string generoId)
+        {
+            string sqltxt = "SELECT * FROM peliculas where GeneroId =" + generoId;
+            return _BD.consulta(sqltxt);
+        }
     }
 }

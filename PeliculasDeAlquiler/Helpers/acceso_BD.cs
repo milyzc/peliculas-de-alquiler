@@ -23,7 +23,7 @@ namespace PeliculasDeAlquiler.Helpers
         //pues no suministra el componete <Password> que debe agregado manualmente por el programador
 
         //string cadena_conexion = "Provider=SQLNCLI11;Data Source=maquis;Persist Security Info=True;User ID=avisuales1;Initial Catalog=pav1-db-peliculas;password=avisuales1"; //workstation id=pav1-db.mssql.somee.com;packet size=4096;user id=milizc_SQLLogin_1;pwd=2s9o1yeexo;data source=pav1-db.mssql.somee.com;persist security info=False;initial catalog=pav1-db
-        string cadena_conexion = "Provider=SQLNCLI11;workstation id=pav1-db.mssql.somee.com;packet size=4096;user id=milizc_SQLLogin_1;pwd=2s9o1yeexo;data source=pav1-db.mssql.somee.com;persist security info=False;initial catalog=pav1-db";
+        string cadena_conexion = "Provider=SQLNCLI11;workstation id=pav1-bdCaliva.mssql.somee.com;packet size=4096;user id=ariel22_SQLLogin_1;pwd=8fwahuufy6;data source=pav1-bdCaliva.mssql.somee.com;persist security info=False;initial catalog=pav1-bdCaliva";
         //procedimiento privado <conectar> que prepara la conexión con la base de dato
         private void conectar()
         {
@@ -52,19 +52,25 @@ namespace PeliculasDeAlquiler.Helpers
             //ejecuta el procedimiento local <conectar>
             conectar();
             //asigna a <cmd> el comando que se debe ejecutar, que viene por parámetro
-            //de entrada <comando>
+            //de entrada <comando> sea Select.. or insert
             cmd.CommandText = comando;
             //instancia un objeto <tabla> del tipo DataTable
+            // crea una tabla en memoria vaica
             DataTable tabla = new DataTable();
             //aquí dos acciones. 1) Ejecuta el comando SQL que ingreso por parámetro de entrada
             //en el pedazo de comando <cmd.ExecuteReader()>
             //2) Carga la tabla con el valor de resultado del comando SQL en el pedazo de texto
             //<tabla.Load(. . . )>
+            //traigo la tabla vacia cargada en memoria y cargame los datos de la base de datos
+            //Solo leer cmd.ExecuteReader()
             tabla.Load(cmd.ExecuteReader());
+            //cmd.ExecuteNonQuery() para pdoer ingresar valores desde la appi
+            //tabla.Load(cmd.ExecuteNonQuery());
             //ejecuta el procedimiento <cerrar>
             cerrar();
             //devuelve el valor calculado a través de la función
             return tabla;
         }
+        
     }
 }
