@@ -37,17 +37,31 @@ namespace PeliculasDeAlquiler.Repositorios
             return _BD.consulta(sqltxt);
         }
 
-        public DataTable ObtenerGenero()
+        public DataTable ObtenerGenerosDT()
         {
-            //Trae una tabla con generos de la DB.
-            string sqltxt = "SELECT * From Generos";
+            //se define una variable local a la función <sqltxt> del tipo <string> donde en el 
+            //momento de su creación se le asigan su contenido, que es el comando SELECT  
+            //necesario para poder establecer la veracidad del usuario.
+            string sqltxt = "SELECT * FROM generos";
+
+            //aquí dos acciones. 1)ejecuta el SQL atravéz del objeto <_BD> utilizando la función
+            //<consulta> pasando por parámentro de la función el comando SQL, esta función devuelve una tabla.
+            //2)Devuelve con el comando <return> a travéz de la función <consulta_login> el resultado 
+            //del SQL.
             return _BD.consulta(sqltxt);
         }
 
-        public DataTable BuscarGenero(string genero)
+        public DataTable ObtenerPeliculasDTFiltros(string generoId)
         {
-            //Busco en la DB las peliculas con un genero determinado
-            string sqltxt = "SELECT * From Peliculas Where Peliculas.GeneroId=" + genero;
+            //se define una variable local a la función <sqltxt> del tipo <string> donde en el 
+            //momento de su creación se le asigan su contenido, que es el comando SELECT  
+            //necesario para poder establecer la veracidad del usuario.
+            string sqltxt = "SELECT * FROM peliculas where GeneroId=" + generoId;
+
+            //aquí dos acciones. 1)ejecuta el SQL atravéz del objeto <_BD> utilizando la función
+            //<consulta> pasando por parámentro de la función el comando SQL, esta función devuelve una tabla.
+            //2)Devuelve con el comando <return> a travéz de la función <consulta_login> el resultado 
+            //del SQL.
             return _BD.consulta(sqltxt);
         }
     }

@@ -1,4 +1,5 @@
-﻿using PeliculasDeAlquiler.Repositorios;
+﻿using PeliculasDeAlquiler.Modulos.Directores;
+using PeliculasDeAlquiler.Repositorios;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -8,7 +9,8 @@ namespace PeliculasDeAlquiler
 {
     public partial class ConsultarPeliculas : Form
     {
-        PeliculasRepositorio _peliculasRepositorio;
+        PeliculasRepositorio _peliculasRepositorio;        
+
         public ConsultarPeliculas()
         {
             InitializeComponent();
@@ -36,8 +38,7 @@ namespace PeliculasDeAlquiler
             {
                 if (pelicula.HasErrors)
                     continue; // no corto el ciclo
-                var fila = new string[] 
-                {
+                var fila = new string[] {
                     pelicula.ItemArray[0].ToString(),
                     pelicula.ItemArray[1].ToString(),
                     pelicula.ItemArray[2].ToString(),
@@ -52,18 +53,20 @@ namespace PeliculasDeAlquiler
             //DgvPeliculas.Columns[2].DisplayIndex = 2;
             //DgvPeliculas.Update();
         }
+
         private void ActualizarCombo()
         {
-            var genero = _peliculasRepositorio.ObtenerGenero();
-            cmbGenero.ValueMember = "ID";
-            cmbGenero.DisplayMember = "Tipo";
-            cmbGenero.DataSource = genero;
+            var generos = _peliculasRepositorio.ObtenerGenerosDT();
+            CbGeneros.ValueMember = "Id";
+            CbGeneros.DisplayMember = "Tipo";
+            CbGeneros.DataSource = generos;
         }
 
-        private void btnBuscar_Click(object sender, EventArgs e)
+        private void button1_Click(object sender, EventArgs e)
         {
             DgvPeliculas.Rows.Clear();
-            var peliculas = _peliculasRepositorio.BuscarGenero(cmbGenero.SelectedValue.ToString()).Rows;
+            var valor = CbGeneros.SelectedValue;
+            var peliculas = _peliculasRepositorio.ObtenerPeliculasDTFiltros(valor.ToString()).Rows;
             var filas = new List<DataGridViewRow>();
             foreach (DataRow pelicula in peliculas)
             {
@@ -79,6 +82,13 @@ namespace PeliculasDeAlquiler
 
                 DgvPeliculas.Rows.Add(fila);
             }
+        }
+
+        private void directoresToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var directoresForm = new DirectoresForm(this);
+            directoresForm.Show();
+            this.Hide(); 
         }
     }
 }

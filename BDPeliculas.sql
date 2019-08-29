@@ -1,9 +1,9 @@
-﻿USE [pav1-db]
-GO
-ALTER TABLE [dbo].[Peliculas] DROP CONSTRAINT [FK_Peliculas_Generos]
-GO
-ALTER TABLE [dbo].[Peliculas] DROP CONSTRAINT [FK_Peliculas_Directores]
-GO
+﻿--USE [pav1-mili]
+--GO
+--ALTER TABLE [dbo].[Peliculas] DROP CONSTRAINT [FK_Peliculas_Generos]
+--GO
+--ALTER TABLE [dbo].[Peliculas] DROP CONSTRAINT [FK_Peliculas_Directores]
+--GO
 /****** Object:  Table [dbo].[Peliculas]     Script Date: 8/15/2019 8:49:28 PM ******/
 DROP TABLE [dbo].[Peliculas]
 GO
@@ -13,7 +13,7 @@ GO
 /****** Object:  Table [dbo].[Directores]    Script Date: 8/15/2019 8:49:28 PM ******/
 DROP TABLE [dbo].[Directores]
 GO
-/****** Object:  Table [dbo].[Directores]    Script Date: 8/15/2019 8:49:28 PM ******/
+--/****** Object:  Table [dbo].[Directores]    Script Date: 8/15/2019 8:49:28 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -22,6 +22,7 @@ CREATE TABLE [dbo].[Directores](
 	[Id] [int] IDENTITY(1,1) NOT NULL,
 	[Nombre] [varchar](50) NOT NULL,
 	[Nacionalidad] [varchar](50) NULL,
+	[FechaNacimiento] [date] NULL,
  CONSTRAINT [PK_Directores] PRIMARY KEY CLUSTERED 
 (
 	[Id] ASC
@@ -48,7 +49,7 @@ GO
 SET QUOTED_IDENTIFIER ON
 GO
 CREATE TABLE [dbo].[Peliculas](
-	[Id] [int] NOT NULL,
+	[Id] [int]  IDENTITY(1,1) NOT NULL,
 	[Titulo] [varchar](50) NULL,
 	[FechaLanzamiento] [date] NULL,
 	[GeneroId] [int] NOT NULL,
@@ -78,6 +79,8 @@ INSERT [dbo].[Generos] ([Id], [Tipo]) VALUES (3, N'Thriller')
 INSERT [dbo].[Generos] ([Id], [Tipo]) VALUES (4, N'Drama')
 INSERT [dbo].[Generos] ([Id], [Tipo]) VALUES (5, N'Crimen')
 SET IDENTITY_INSERT [dbo].[Generos] OFF
+
+SET IDENTITY_INSERT [dbo].[Peliculas] ON 
 INSERT [dbo].[Peliculas] ([Id], [Titulo], [FechaLanzamiento], [GeneroId], [DirectorId]) VALUES (1, N'Superman vs Batman', CAST(N'2016-03-25' AS Date), 1, 1)
 INSERT [dbo].[Peliculas] ([Id], [Titulo], [FechaLanzamiento], [GeneroId], [DirectorId]) VALUES (2, N'Deadpool', CAST(N'2016-02-12' AS Date), 2, 2)
 INSERT [dbo].[Peliculas] ([Id], [Titulo], [FechaLanzamiento], [GeneroId], [DirectorId]) VALUES (3, N'Rápidos y Furiosos 7', CAST(N'2015-04-03' AS Date), 3, 3)
@@ -88,6 +91,8 @@ INSERT [dbo].[Peliculas] ([Id], [Titulo], [FechaLanzamiento], [GeneroId], [Direc
 INSERT [dbo].[Peliculas] ([Id], [Titulo], [FechaLanzamiento], [GeneroId], [DirectorId]) VALUES (8, N'James Bond: Spectre', CAST(N'2015-11-06' AS Date), 3, 7)
 INSERT [dbo].[Peliculas] ([Id], [Titulo], [FechaLanzamiento], [GeneroId], [DirectorId]) VALUES (9, N'Batman inicia', CAST(N'2005-06-15' AS Date), 1, 8)
 INSERT [dbo].[Peliculas] ([Id], [Titulo], [FechaLanzamiento], [GeneroId], [DirectorId]) VALUES (10, N'El caballero de la noche', CAST(N'2008-07-18' AS Date), 5, 8)
+SET IDENTITY_INSERT [dbo].[Peliculas] OFF
+
 ALTER TABLE [dbo].[Peliculas]  WITH CHECK ADD  CONSTRAINT [FK_Peliculas_Directores] FOREIGN KEY([DirectorId])
 REFERENCES [dbo].[Directores] ([Id])
 GO
