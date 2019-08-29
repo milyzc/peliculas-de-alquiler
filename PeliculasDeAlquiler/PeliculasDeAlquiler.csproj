@@ -55,6 +55,12 @@
     <Compile Include="Modelos\Director.cs" />
     <Compile Include="Modelos\Genero.cs" />
     <Compile Include="Modelos\Pelicula.cs" />
+    <Compile Include="Modulos\Directores\abmDirector.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Modulos\Directores\abmDirector.Designer.cs">
+      <DependentUpon>abmDirector.cs</DependentUpon>
+    </Compile>
     <Compile Include="Modulos\Directores\DirectoresForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -67,6 +73,9 @@
     <Compile Include="Repositorios\PeliculasRepositorio.cs" />
     <EmbeddedResource Include="ConsultarPeliculas.resx">
       <DependentUpon>ConsultarPeliculas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modulos\Directores\abmDirector.resx">
+      <DependentUpon>abmDirector.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Modulos\Directores\DirectoresForm.resx">
       <DependentUpon>DirectoresForm.cs</DependentUpon>
