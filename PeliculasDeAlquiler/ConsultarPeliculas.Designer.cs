@@ -38,7 +38,10 @@
             this.BtnRefresh = new System.Windows.Forms.Button();
             this.CbGeneros = new System.Windows.Forms.ComboBox();
             this.button1 = new System.Windows.Forms.Button();
+            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.directoresToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.DgvPeliculas)).BeginInit();
+            this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // DgvPeliculas
@@ -124,6 +127,24 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
+            // menuStrip1
+            // 
+            this.menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.directoresToolStripMenuItem});
+            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip1.Name = "menuStrip1";
+            this.menuStrip1.Size = new System.Drawing.Size(1097, 28);
+            this.menuStrip1.TabIndex = 4;
+            this.menuStrip1.Text = "menuStrip1";
+            // 
+            // directoresToolStripMenuItem
+            // 
+            this.directoresToolStripMenuItem.Name = "directoresToolStripMenuItem";
+            this.directoresToolStripMenuItem.Size = new System.Drawing.Size(89, 24);
+            this.directoresToolStripMenuItem.Text = "Directores";
+            this.directoresToolStripMenuItem.Click += new System.EventHandler(this.directoresToolStripMenuItem_Click);
+            // 
             // ConsultarPeliculas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -134,11 +155,16 @@
             this.Controls.Add(this.CbGeneros);
             this.Controls.Add(this.BtnRefresh);
             this.Controls.Add(this.DgvPeliculas);
+            this.Controls.Add(this.menuStrip1);
+            this.MainMenuStrip = this.menuStrip1;
             this.Name = "ConsultarPeliculas";
             this.Text = "Películas";
             this.Load += new System.EventHandler(this.ConsultarPeliculas_Load);
             ((System.ComponentModel.ISupportInitialize)(this.DgvPeliculas)).EndInit();
+            this.menuStrip1.ResumeLayout(false);
+            this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -153,6 +179,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Director;
         private System.Windows.Forms.ComboBox CbGeneros;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.MenuStrip menuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem directoresToolStripMenuItem;
     }
 }
 

@@ -1,4 +1,5 @@
-﻿using PeliculasDeAlquiler.Repositorios;
+﻿using PeliculasDeAlquiler.Modulos.Directores;
+using PeliculasDeAlquiler.Repositorios;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -8,7 +9,8 @@ namespace PeliculasDeAlquiler
 {
     public partial class ConsultarPeliculas : Form
     {
-        PeliculasRepositorio _peliculasRepositorio;
+        PeliculasRepositorio _peliculasRepositorio;        
+
         public ConsultarPeliculas()
         {
             InitializeComponent();
@@ -79,6 +81,13 @@ namespace PeliculasDeAlquiler
 
                 DgvPeliculas.Rows.Add(fila);
             }
+        }
+
+        private void directoresToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var directoresForm = new DirectoresForm(this);
+            directoresForm.Show();
+            this.Hide(); 
         }
     }
 }
