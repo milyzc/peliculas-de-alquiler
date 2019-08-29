@@ -31,7 +31,8 @@ namespace PeliculasDeAlquiler.Repositorios
         public bool Guardar(Director director)
         {
             string sqltxt = $"INSERT [dbo].[Directores] ([Nombre], [Nacionalidad], [FechaNacimiento]) " +
-                $"VALUES ('{director.Nombre}', '{director.Nacionalidad}', '{director.FechaNacimiento.ToString("yyyy-MM-dd")}')";
+                $"VALUES ('{director.Nombre}', " +
+                $"'{director.Nacionalidad}', '{director.FechaNacimiento.ToString("yyyy-MM-dd")}')";
 
             return _BD.EjecutarSQL(sqltxt);
         }
