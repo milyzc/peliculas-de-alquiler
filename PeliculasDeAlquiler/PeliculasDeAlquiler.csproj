@@ -61,6 +61,12 @@
     <Compile Include="Modulos\Directores\DirectoresForm.Designer.cs">
       <DependentUpon>DirectoresForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Modulos\Directores\frmCargaDirector.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Modulos\Directores\frmCargaDirector.Designer.cs">
+      <DependentUpon>frmCargaDirector.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositorios\DirectoresRepositorio.cs" />
@@ -70,6 +76,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Modulos\Directores\DirectoresForm.resx">
       <DependentUpon>DirectoresForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modulos\Directores\frmCargaDirector.resx">
+      <DependentUpon>frmCargaDirector.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

@@ -62,7 +62,9 @@ namespace PeliculasDeAlquiler.Modulos.Directores
 
         private void BtnNuevo_Click(object sender, EventArgs e)
         {
-
+            var ventana = new frmCargaDirector();
+            ventana.ShowDialog();
+            ActualizarDirectores();
         }
 
         private void DirectoresForm_FormClosing(object sender, FormClosingEventArgs e)
