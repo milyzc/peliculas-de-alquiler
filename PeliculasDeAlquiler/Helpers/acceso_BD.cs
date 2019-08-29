@@ -23,7 +23,8 @@ namespace PeliculasDeAlquiler.Helpers
         //pues no suministra el componete <Password> que debe agregado manualmente por el programador
 
         //string cadena_conexion = "Provider=SQLNCLI11;Data Source=maquis;Persist Security Info=True;User ID=avisuales1;Initial Catalog=pav1-db-peliculas;password=avisuales1"; //workstation id=pav1-db.mssql.somee.com;packet size=4096;user id=milizc_SQLLogin_1;pwd=2s9o1yeexo;data source=pav1-db.mssql.somee.com;persist security info=False;initial catalog=pav1-db
-        string cadena_conexion = "Provider=SQLNCLI11;workstation id=pav1-bdCaliva.mssql.somee.com;packet size=4096;user id=ariel22_SQLLogin_1;pwd=8fwahuufy6;data source=pav1-bdCaliva.mssql.somee.com;persist security info=False;initial catalog=pav1-bdCaliva";
+        string cadena_conexion = "Provider=SQLNCLI11;workstation id=pav1-db.mssql.somee.com;packet size=4096;user id=milizc_SQLLogin_1;pwd=2s9o1yeexo;data source=pav1-db.mssql.somee.com;persist security info=False;initial catalog=pav1-db";
+        //string cadena_conexion = "Provider=SQLNCLI11;workstation id=pav1-bdCaliva.mssql.somee.com;packet size=4096;user id=ariel22_SQLLogin_1;pwd=8fwahuufy6;data source=pav1-bdCaliva.mssql.somee.com;persist security info=False;initial catalog=pav1-bdCaliva";
         //procedimiento privado <conectar> que prepara la conexión con la base de dato
         private void conectar()
         {
