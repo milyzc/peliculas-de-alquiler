@@ -1,4 +1,5 @@
-﻿using PeliculasDeAlquiler.Repositorios;
+﻿using PeliculasDeAlquiler.Modulos.Directores;
+using PeliculasDeAlquiler.Repositorios;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -10,7 +11,8 @@ namespace PeliculasDeAlquiler
 {
     public partial class ConsultarPeliculas : Form
     {
-        PeliculasRepositorio _peliculasRepositorio;
+        PeliculasRepositorio _peliculasRepositorio;        
+
         public ConsultarPeliculas()
         {
             InitializeComponent();
@@ -64,19 +66,18 @@ namespace PeliculasDeAlquiler
             //DgvPeliculas.Update();
         }
 
-        private void ActualizarCombo(){
-            var gen = _peliculasRepositorio.ObtnerGeneros();
-            cmbGenero.ValueMember = "Id";
-            cmbGenero.DisplayMember = "Tipo";
-            cmbGenero.DataSource = gen;
+        private void ActualizarCombo()
+        {
+            var generos = _peliculasRepositorio.ObtenerGenerosDT();
+            CbGeneros.ValueMember = "Id";
+            CbGeneros.DisplayMember = "Tipo";
+            CbGeneros.DataSource = generos;
         }
 
-     
-
-        private void btnBuscar_Click(object sender, EventArgs e)
+        private void button1_Click(object sender, EventArgs e)
         {
             DgvPeliculas.Rows.Clear();
-            var valor = cmbGenero.SelectedValue;
+            var valor = CbGeneros.SelectedValue;
             var peliculas = _peliculasRepositorio.ObtenerPeliculasDTFiltros(valor.ToString()).Rows;
             var filas = new List<DataGridViewRow>();
             foreach (DataRow pelicula in peliculas)
@@ -93,11 +94,13 @@ namespace PeliculasDeAlquiler
 
                 DgvPeliculas.Rows.Add(fila);
             }
-            //DgvPeliculas.Columns[0].DisplayIndex = 0;
-            //DgvPeliculas.Columns[1].DisplayIndex = 1;
-            //DgvPeliculas.Columns[2].DisplayIndex = 2;
-            //DgvPeliculas.Update();
+        }
 
+        private void directoresToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var directoresForm = new DirectoresForm(this);
+            directoresForm.Show();
+            this.Hide(); 
         }
     }
 }
