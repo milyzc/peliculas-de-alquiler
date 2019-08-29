@@ -58,10 +58,16 @@ namespace PeliculasDeAlquiler.Modulos.Directores
         private void Directores_Load(object sender, EventArgs e)
         {
             ActualizarDirectores();
+            BtnRefresh.Hide();
+            BtnEliminar.Hide();
         }
 
         private void BtnNuevo_Click(object sender, EventArgs e)
         {
+            var ventana = new NuevoDirector();
+            ventana.ShowDialog();
+            //si uso showdialog despues ejecuta la linea que sigue, si pongo show solo NO
+            ActualizarDirectores();
 
         }
 
@@ -72,7 +78,19 @@ namespace PeliculasDeAlquiler.Modulos.Directores
 
         private void BtnEliminar_Click(object sender, EventArgs e)
         {
-            
+            //ABM
+
+        }
+
+        private void btnSalir_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void DgvDirectores_SelectionChanged(object sender, EventArgs e)
+        {
+            BtnEliminar.Show();
+            BtnRefresh.Show();
         }
     }
 }
