@@ -36,7 +36,8 @@ namespace PeliculasDeAlquiler
             {
                 if (pelicula.HasErrors)
                     continue; // no corto el ciclo
-                var fila = new string[] {
+                var fila = new string[] 
+                {
                     pelicula.ItemArray[0].ToString(),
                     pelicula.ItemArray[1].ToString(),
                     pelicula.ItemArray[2].ToString(),
