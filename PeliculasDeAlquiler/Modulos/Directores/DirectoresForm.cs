@@ -62,9 +62,7 @@ namespace PeliculasDeAlquiler.Modulos.Directores
 
         private void BtnNuevo_Click(object sender, EventArgs e)
         {
-            var ventana = new FormNuevoDirector();
-            ventana.ShowDialog();
-            ActualizarDirectores();
+
         }
 
         private void DirectoresForm_FormClosing(object sender, FormClosingEventArgs e)
@@ -74,33 +72,7 @@ namespace PeliculasDeAlquiler.Modulos.Directores
 
         private void BtnEliminar_Click(object sender, EventArgs e)
         {
-            var seleccionadas = DgvDirectores.SelectedRows;
-            if (seleccionadas.Count == 0)
-            {
-                MessageBox.Show("Debe seleccionar una fila");
-                return;
-            }                
-
-            foreach (DataGridViewRow fila in seleccionadas)
-            {
-                var nombre = fila.Cells[1].Value;
-                var nacionalidad = fila.Cells[2].Value;
-                var id = fila.Cells[0].Value;
-
-                //pregunto confirmación
-                var confirmacion = MessageBox.Show($"Esta seguro que desea eliminar a {nombre}, {nacionalidad}?", 
-                    "Confirmar operación", 
-                    MessageBoxButtons.YesNo);
-
-                if (confirmacion.Equals(DialogResult.No))
-                    return;
-                
-                if (_directoresRepositorio.Eliminar(id.ToString()))
-                {
-                    MessageBox.Show("Se eliminó exitosamente");
-                    ActualizarDirectores();
-                }
-            }
+            
         }
     }
 }
