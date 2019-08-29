@@ -62,7 +62,9 @@ namespace PeliculasDeAlquiler.Modulos.Directores
 
         private void BtnNuevo_Click(object sender, EventArgs e)
         {
-
+            var ventana = new FormNuevoDirector();
+            ventana.ShowDialog();
+            ActualizarDirectores();
         }
 
         private void DirectoresForm_FormClosing(object sender, FormClosingEventArgs e)
@@ -72,7 +74,7 @@ namespace PeliculasDeAlquiler.Modulos.Directores
 
         private void BtnEliminar_Click(object sender, EventArgs e)
         {
-            
+            // código para borrar un director
         }
     }
 }
