@@ -66,5 +66,19 @@ namespace PeliculasDeAlquiler.Helpers
             //devuelve el valor calculado a través de la función
             return tabla;
         }
+
+        public bool EjecutarSQL(string comando)
+        {
+            conectar();
+
+            cmd.CommandText = comando;            
+
+            var filasAfectadas = cmd.ExecuteNonQuery(); //Cantidad de filas afectadas
+
+            //ejecuta el procedimiento <cerrar>
+            cerrar();
+
+            return filasAfectadas > 0;
+        }
     }
 }

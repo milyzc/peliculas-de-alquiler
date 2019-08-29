@@ -55,11 +55,21 @@
     <Compile Include="Modelos\Director.cs" />
     <Compile Include="Modelos\Genero.cs" />
     <Compile Include="Modelos\Pelicula.cs" />
+    <Compile Include="Modulos\Directores\DirectoresForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Modulos\Directores\DirectoresForm.Designer.cs">
+      <DependentUpon>DirectoresForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositorios\DirectoresRepositorio.cs" />
     <Compile Include="Repositorios\PeliculasRepositorio.cs" />
     <EmbeddedResource Include="ConsultarPeliculas.resx">
       <DependentUpon>ConsultarPeliculas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modulos\Directores\DirectoresForm.resx">
+      <DependentUpon>DirectoresForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
