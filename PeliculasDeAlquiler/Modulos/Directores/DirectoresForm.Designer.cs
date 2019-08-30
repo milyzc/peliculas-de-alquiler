@@ -30,13 +30,14 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DirectoresForm));
             this.DgvDirectores = new System.Windows.Forms.DataGridView();
-            this.BtnRefresh = new System.Windows.Forms.Button();
-            this.BtnNuevo = new System.Windows.Forms.Button();
-            this.BtnEliminar = new System.Windows.Forms.Button();
             this.Codigo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Nacionalidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.FechaNacimiento = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.BtnRefresh = new System.Windows.Forms.Button();
+            this.BtnNuevo = new System.Windows.Forms.Button();
+            this.BtnEliminar = new System.Windows.Forms.Button();
+            this.BtnEditar = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.DgvDirectores)).BeginInit();
             this.SuspendLayout();
             // 
@@ -58,54 +59,6 @@
             this.DgvDirectores.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.DgvDirectores.Size = new System.Drawing.Size(863, 329);
             this.DgvDirectores.TabIndex = 0;
-            // 
-            // BtnRefresh
-            // 
-            this.BtnRefresh.BackColor = System.Drawing.Color.Transparent;
-            this.BtnRefresh.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("BtnRefresh.BackgroundImage")));
-            this.BtnRefresh.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.BtnRefresh.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.BtnRefresh.FlatAppearance.BorderColor = System.Drawing.Color.Bisque;
-            this.BtnRefresh.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.BtnRefresh.ForeColor = System.Drawing.Color.Transparent;
-            this.BtnRefresh.Location = new System.Drawing.Point(827, 46);
-            this.BtnRefresh.Name = "BtnRefresh";
-            this.BtnRefresh.Size = new System.Drawing.Size(63, 61);
-            this.BtnRefresh.TabIndex = 2;
-            this.BtnRefresh.UseVisualStyleBackColor = false;
-            this.BtnRefresh.Click += new System.EventHandler(this.BtnRefresh_Click);
-            // 
-            // BtnNuevo
-            // 
-            this.BtnNuevo.BackColor = System.Drawing.Color.Transparent;
-            this.BtnNuevo.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("BtnNuevo.BackgroundImage")));
-            this.BtnNuevo.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.BtnNuevo.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.BtnNuevo.FlatAppearance.BorderColor = System.Drawing.Color.Bisque;
-            this.BtnNuevo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.BtnNuevo.ForeColor = System.Drawing.Color.Transparent;
-            this.BtnNuevo.Location = new System.Drawing.Point(752, 47);
-            this.BtnNuevo.Name = "BtnNuevo";
-            this.BtnNuevo.Size = new System.Drawing.Size(69, 59);
-            this.BtnNuevo.TabIndex = 3;
-            this.BtnNuevo.UseVisualStyleBackColor = false;
-            this.BtnNuevo.Click += new System.EventHandler(this.BtnNuevo_Click);
-            // 
-            // BtnEliminar
-            // 
-            this.BtnEliminar.BackColor = System.Drawing.Color.Transparent;
-            this.BtnEliminar.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("BtnEliminar.BackgroundImage")));
-            this.BtnEliminar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.BtnEliminar.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.BtnEliminar.FlatAppearance.BorderColor = System.Drawing.Color.Bisque;
-            this.BtnEliminar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.BtnEliminar.ForeColor = System.Drawing.Color.Transparent;
-            this.BtnEliminar.Location = new System.Drawing.Point(677, 47);
-            this.BtnEliminar.Name = "BtnEliminar";
-            this.BtnEliminar.Size = new System.Drawing.Size(69, 59);
-            this.BtnEliminar.TabIndex = 4;
-            this.BtnEliminar.UseVisualStyleBackColor = false;
-            this.BtnEliminar.Click += new System.EventHandler(this.BtnEliminar_Click);
             // 
             // Codigo
             // 
@@ -132,12 +85,77 @@
             this.FechaNacimiento.Name = "FechaNacimiento";
             this.FechaNacimiento.ReadOnly = true;
             // 
+            // BtnRefresh
+            // 
+            this.BtnRefresh.BackColor = System.Drawing.Color.Transparent;
+            this.BtnRefresh.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("BtnRefresh.BackgroundImage")));
+            this.BtnRefresh.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.BtnRefresh.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.BtnRefresh.FlatAppearance.BorderColor = System.Drawing.Color.Bisque;
+            this.BtnRefresh.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BtnRefresh.ForeColor = System.Drawing.Color.Transparent;
+            this.BtnRefresh.Location = new System.Drawing.Point(827, 46);
+            this.BtnRefresh.Name = "BtnRefresh";
+            this.BtnRefresh.Size = new System.Drawing.Size(63, 61);
+            this.BtnRefresh.TabIndex = 2;
+            this.BtnRefresh.UseVisualStyleBackColor = false;
+            this.BtnRefresh.Click += new System.EventHandler(this.BtnRefresh_Click);
+            // 
+            // BtnNuevo
+            // 
+            this.BtnNuevo.BackColor = System.Drawing.Color.Transparent;
+            this.BtnNuevo.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("BtnNuevo.BackgroundImage")));
+            this.BtnNuevo.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.BtnNuevo.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.BtnNuevo.FlatAppearance.BorderColor = System.Drawing.Color.Bisque;
+            this.BtnNuevo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BtnNuevo.ForeColor = System.Drawing.Color.Transparent;
+            this.BtnNuevo.Location = new System.Drawing.Point(682, 47);
+            this.BtnNuevo.Name = "BtnNuevo";
+            this.BtnNuevo.Size = new System.Drawing.Size(71, 59);
+            this.BtnNuevo.TabIndex = 3;
+            this.BtnNuevo.UseVisualStyleBackColor = false;
+            this.BtnNuevo.Click += new System.EventHandler(this.BtnNuevo_Click);
+            // 
+            // BtnEliminar
+            // 
+            this.BtnEliminar.BackColor = System.Drawing.Color.Transparent;
+            this.BtnEliminar.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("BtnEliminar.BackgroundImage")));
+            this.BtnEliminar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.BtnEliminar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.BtnEliminar.FlatAppearance.BorderColor = System.Drawing.Color.Bisque;
+            this.BtnEliminar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BtnEliminar.ForeColor = System.Drawing.Color.Transparent;
+            this.BtnEliminar.Location = new System.Drawing.Point(618, 47);
+            this.BtnEliminar.Name = "BtnEliminar";
+            this.BtnEliminar.Size = new System.Drawing.Size(69, 59);
+            this.BtnEliminar.TabIndex = 4;
+            this.BtnEliminar.UseVisualStyleBackColor = false;
+            this.BtnEliminar.Click += new System.EventHandler(this.BtnEliminar_Click);
+            // 
+            // BtnEditar
+            // 
+            this.BtnEditar.BackColor = System.Drawing.Color.Transparent;
+            this.BtnEditar.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("BtnEditar.BackgroundImage")));
+            this.BtnEditar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.BtnEditar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.BtnEditar.FlatAppearance.BorderColor = System.Drawing.Color.Bisque;
+            this.BtnEditar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BtnEditar.ForeColor = System.Drawing.Color.Transparent;
+            this.BtnEditar.Location = new System.Drawing.Point(758, 47);
+            this.BtnEditar.Name = "BtnEditar";
+            this.BtnEditar.Size = new System.Drawing.Size(63, 61);
+            this.BtnEditar.TabIndex = 5;
+            this.BtnEditar.UseVisualStyleBackColor = false;
+            this.BtnEditar.Click += new System.EventHandler(this.BtnEditar_Click);
+            // 
             // DirectoresForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Bisque;
             this.ClientSize = new System.Drawing.Size(915, 485);
+            this.Controls.Add(this.BtnEditar);
             this.Controls.Add(this.BtnEliminar);
             this.Controls.Add(this.BtnNuevo);
             this.Controls.Add(this.BtnRefresh);
@@ -161,5 +179,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Nombre;
         private System.Windows.Forms.DataGridViewTextBoxColumn Nacionalidad;
         private System.Windows.Forms.DataGridViewTextBoxColumn FechaNacimiento;
+        private System.Windows.Forms.Button BtnEditar;
     }
 }

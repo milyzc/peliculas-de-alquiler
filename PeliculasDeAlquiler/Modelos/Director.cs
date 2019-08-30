@@ -4,7 +4,12 @@ namespace PeliculasDeAlquiler.Modelos
 {
     public class Director
     {
-        public int Id { get; set; }
+        private int _id;
+
+        public int Id {
+            get { return _id; }
+            set { _id = value; }
+        }
 
         public string Nombre { get; set; }
 

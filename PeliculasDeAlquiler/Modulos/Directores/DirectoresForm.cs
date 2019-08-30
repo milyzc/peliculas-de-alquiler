@@ -75,7 +75,7 @@ namespace PeliculasDeAlquiler.Modulos.Directores
         private void BtnEliminar_Click(object sender, EventArgs e)
         {
             var seleccionadas = DgvDirectores.SelectedRows;
-            if (seleccionadas.Count == 0)
+            if (seleccionadas.Count == 0 || seleccionadas.Count > 1)
             {
                 MessageBox.Show("Debe seleccionar una fila");
                 return;
@@ -100,6 +100,24 @@ namespace PeliculasDeAlquiler.Modulos.Directores
                     MessageBox.Show("Se eliminó exitosamente");
                     ActualizarDirectores();
                 }
+            }
+        }
+
+        private void BtnEditar_Click(object sender, EventArgs e)
+        {
+            var seleccionadas = DgvDirectores.SelectedRows;
+            if (seleccionadas.Count == 0 || seleccionadas.Count > 1)
+            {
+                MessageBox.Show("Debe seleccionar una fila");
+                return;
+            }
+            foreach (DataGridViewRow fila in seleccionadas)
+            {
+                var id = fila.Cells[0].Value;
+
+                var ventana = new EditarDirectorForm(id.ToString());
+                ventana.ShowDialog();
+                ActualizarDirectores();                
             }
         }
     }
