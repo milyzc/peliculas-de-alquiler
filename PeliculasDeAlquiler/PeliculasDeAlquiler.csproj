@@ -51,6 +51,12 @@
     <Compile Include="ConsultarPeliculas.Designer.cs">
       <DependentUpon>ConsultarPeliculas.cs</DependentUpon>
     </Compile>
+    <Compile Include="formModificar.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="formModificar.Designer.cs">
+      <DependentUpon>formModificar.cs</DependentUpon>
+    </Compile>
     <Compile Include="Helpers\acceso_BD.cs" />
     <Compile Include="Modelos\Director.cs" />
     <Compile Include="Modelos\Genero.cs" />
@@ -73,6 +79,9 @@
     <Compile Include="Repositorios\PeliculasRepositorio.cs" />
     <EmbeddedResource Include="ConsultarPeliculas.resx">
       <DependentUpon>ConsultarPeliculas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="formModificar.resx">
+      <DependentUpon>formModificar.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Modulos\Directores\DirectoresForm.resx">
       <DependentUpon>DirectoresForm.cs</DependentUpon>

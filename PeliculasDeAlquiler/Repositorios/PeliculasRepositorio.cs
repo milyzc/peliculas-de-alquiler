@@ -64,5 +64,6 @@ namespace PeliculasDeAlquiler.Repositorios
             //del SQL.
             return _BD.consulta(sqltxt);
         }
+
     }
 }

@@ -101,5 +101,23 @@ namespace PeliculasDeAlquiler.Modulos.Directores
             }
             // código para borrar un director
         }
+
+        private void Modificar_Click(object sender, EventArgs e)
+        {
+            var seieccionadas = DgvDirectores.SelectedRows;
+            if(seieccionadas.Count == 0 || seieccionadas.Count>1)
+            {
+                MessageBox.Show("Debe seleccionar una fila");
+                return;
+            }
+            foreach(DataGridViewRow fila in seieccionadas)
+            {
+                var id = fila.Cells[0].Value;
+
+                var ventana = new formModificar(id.ToString());
+                ventana.ShowDialog();
+                ActualizarDirectores();
+            }
+        }
     }
 }

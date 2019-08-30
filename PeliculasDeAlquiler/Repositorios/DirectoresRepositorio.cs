@@ -1,5 +1,6 @@
 ﻿using PeliculasDeAlquiler.Helpers;
 using PeliculasDeAlquiler.Modelos;
+using System;
 using System.Data;
 
 namespace PeliculasDeAlquiler.Repositorios
@@ -31,8 +32,8 @@ namespace PeliculasDeAlquiler.Repositorios
         public bool Guardar(Director director)
         {
             string sqltxt = $"INSERT dbo.Directores (Nombre, Nacionalidad, FechaNacimiento) " +
-                $"VALUES ('{director.Nombre}', " +
-                $"'{director.Nacionalidad}', '{director.FechaNacimiento.ToString("yyyy-MM-dd")}')";
+                $"VALUES ({director.Nombre}, " +
+                $"{director.Nacionalidad}, {director.FechaNacimiento.ToString("yyyy-MM-dd")})";
 
             return _BD.EjecutarSQL(sqltxt);
         }
@@ -44,6 +45,36 @@ namespace PeliculasDeAlquiler.Repositorios
             return _BD.EjecutarSQL(sqltxt);
         }
 
+        public Director ObtenerDirector(string directorId)
+        {
+            string sqltxt = $"SELECT * FROM dbo.Directores WHERE id={directorId}";
+            var tablaTemporal = _BD.consulta(sqltxt);
+
+            if (tablaTemporal.Rows.Count==0)
+                return null;
+            var director = new Director();
+            foreach (DataRow fila in tablaTemporal.Rows)
+            {
+                if (fila.HasErrors)
+                    continue;
+                DateTime fecha = DateTime.MinValue;
+
+                DateTime.TryParse(fila.ItemArray[3]?.ToString(), out fecha);
+
+                director.Id = int.Parse(fila.ItemArray[0].ToString());
+                director.Nombre = fila.ItemArray[1].ToString();
+                director.Nacionalidad = fila.ItemArray[2].ToString();
+                director.FechaNacimiento = fecha;
+            }
+            return director;
+        }
+
+        public bool Actualizar(Director director)
+        {
+            string sqltxt = $"UPDATE dbo.Directores SET Nombre = '{director.Nombre}', Nacionalidad = '{director.Nacionalidad}', FechaNacimiento = '{director.FechaNacimiento.ToString("yyyy-MM-dd")}' WHERE id={director.Id}";
+
+            return _BD.EjecutarSQL(sqltxt);
+        }
 
     }
 }
