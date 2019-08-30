@@ -16,6 +16,7 @@ namespace PeliculasDeAlquiler.Repositorios
 
         public DirectoresRepositorio()
         {
+
             _BD = new acceso_BD();
         }
         public DataTable ObtenerDirectoresDT()
