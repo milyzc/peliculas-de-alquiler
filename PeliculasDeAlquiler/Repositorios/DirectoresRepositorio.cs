@@ -18,7 +18,6 @@ namespace PeliculasDeAlquiler.Repositorios
         {
             _BD = new acceso_BD();
         }
-
         public DataTable ObtenerDirectoresDT()
         {
             //se define una variable local a la función <sqltxt> del tipo <string> donde en el 
