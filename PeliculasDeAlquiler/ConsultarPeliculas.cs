@@ -89,5 +89,10 @@ namespace PeliculasDeAlquiler
             directoresForm.Show();
             this.Hide(); 
         }
+
+        private void menuStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        {
+
+        }
     }
 }

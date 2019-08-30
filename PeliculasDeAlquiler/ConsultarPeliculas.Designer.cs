@@ -55,11 +55,12 @@
             this.FechaLanzamiento,
             this.Genero,
             this.Director});
-            this.DgvPeliculas.Location = new System.Drawing.Point(55, 303);
+            this.DgvPeliculas.Location = new System.Drawing.Point(41, 246);
+            this.DgvPeliculas.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.DgvPeliculas.Name = "DgvPeliculas";
             this.DgvPeliculas.ReadOnly = true;
             this.DgvPeliculas.RowTemplate.Height = 24;
-            this.DgvPeliculas.Size = new System.Drawing.Size(964, 368);
+            this.DgvPeliculas.Size = new System.Drawing.Size(723, 299);
             this.DgvPeliculas.TabIndex = 0;
             // 
             // Codigo
@@ -102,9 +103,10 @@
             this.BtnRefresh.FlatAppearance.BorderColor = System.Drawing.Color.Bisque;
             this.BtnRefresh.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnRefresh.ForeColor = System.Drawing.Color.Transparent;
-            this.BtnRefresh.Location = new System.Drawing.Point(953, 234);
+            this.BtnRefresh.Location = new System.Drawing.Point(715, 190);
+            this.BtnRefresh.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.BtnRefresh.Name = "BtnRefresh";
-            this.BtnRefresh.Size = new System.Drawing.Size(66, 63);
+            this.BtnRefresh.Size = new System.Drawing.Size(50, 51);
             this.BtnRefresh.TabIndex = 1;
             this.BtnRefresh.UseVisualStyleBackColor = false;
             this.BtnRefresh.Click += new System.EventHandler(this.BtnRefresh_Click);
@@ -112,16 +114,18 @@
             // CbGeneros
             // 
             this.CbGeneros.FormattingEnabled = true;
-            this.CbGeneros.Location = new System.Drawing.Point(55, 70);
+            this.CbGeneros.Location = new System.Drawing.Point(41, 57);
+            this.CbGeneros.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.CbGeneros.Name = "CbGeneros";
-            this.CbGeneros.Size = new System.Drawing.Size(215, 24);
+            this.CbGeneros.Size = new System.Drawing.Size(162, 21);
             this.CbGeneros.TabIndex = 2;
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(325, 70);
+            this.button1.Location = new System.Drawing.Point(244, 57);
+            this.button1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(90, 35);
+            this.button1.Size = new System.Drawing.Size(68, 28);
             this.button1.TabIndex = 3;
             this.button1.Text = "Buscar";
             this.button1.UseVisualStyleBackColor = true;
@@ -134,29 +138,32 @@
             this.directoresToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1097, 28);
+            this.menuStrip1.Padding = new System.Windows.Forms.Padding(4, 2, 0, 2);
+            this.menuStrip1.Size = new System.Drawing.Size(823, 24);
             this.menuStrip1.TabIndex = 4;
             this.menuStrip1.Text = "menuStrip1";
+            this.menuStrip1.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.menuStrip1_ItemClicked);
             // 
             // directoresToolStripMenuItem
             // 
             this.directoresToolStripMenuItem.Name = "directoresToolStripMenuItem";
-            this.directoresToolStripMenuItem.Size = new System.Drawing.Size(89, 24);
+            this.directoresToolStripMenuItem.Size = new System.Drawing.Size(72, 20);
             this.directoresToolStripMenuItem.Text = "Directores";
             this.directoresToolStripMenuItem.Click += new System.EventHandler(this.directoresToolStripMenuItem_Click);
             // 
             // ConsultarPeliculas
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Bisque;
-            this.ClientSize = new System.Drawing.Size(1097, 701);
+            this.ClientSize = new System.Drawing.Size(823, 570);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.CbGeneros);
             this.Controls.Add(this.BtnRefresh);
             this.Controls.Add(this.DgvPeliculas);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "ConsultarPeliculas";
             this.Text = "Películas";
             this.Load += new System.EventHandler(this.ConsultarPeliculas_Load);
