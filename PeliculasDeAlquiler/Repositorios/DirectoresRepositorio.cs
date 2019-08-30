@@ -44,13 +44,6 @@ namespace PeliculasDeAlquiler.Repositorios
             return _BD.EjecutarSQL(sqltxt);
         }
 
-        public bool Actualizar(Director director)
-        {
-            string sqltxt = $"UPDATE [dbo].[Directores] SET Nombre = '{director.Nombre}', Nacionalidad = '{director.Nacionalidad}', FechaNacimiento = '{director.FechaNacimiento.ToString("yyyy-MM-dd")}' WHERE id={director.Id}";
-
-            return _BD.EjecutarSQL(sqltxt);
-        }
-
         public bool Eliminar(string directorId)
         {
             string sqltxt = $"DELETE FROM [dbo].[Directores] WHERE id = {directorId}";
