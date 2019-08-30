@@ -74,7 +74,46 @@ namespace PeliculasDeAlquiler.Modulos.Directores
 
         private void BtnEliminar_Click(object sender, EventArgs e)
         {
-            
+            var seleccionadas = DgvDirectores.SelectedRows;
+            if(seleccionadas.Count == 0 || seleccionadas.Count>1)
+            {
+                MessageBox.Show("Debe seleccionar una fila");
+                return;
+            }
+            foreach (DataGridViewRow fila in seleccionadas) {
+                var nombre = fila.Cells[1].Value;
+                var nacionalidad = fila.Cells[2].Value;
+                var id = fila.Cells[0].Value;
+                //pregunto confirmacion
+                var confirmacion = MessageBox.Show($"Esta seguro eliminar a {nombre},{nacionalidad}?",
+                    "Confirmar operaciòn",
+                    MessageBoxButtons.YesNo);
+                if (confirmacion.Equals(DialogResult.No))
+                {
+                    return;
+                }
+                if (_directoresRepositorio.Eliminar(id.ToString())) {
+                    MessageBox.Show("se elimino exitosamente");
+                    ActualizarDirectores();
+                }
+            }
+        }
+
+        private void btnEditar_Click(object sender, EventArgs e)
+        {
+            var seleccionadas = DgvDirectores.SelectedRows;
+            if(seleccionadas.Count ==0 || seleccionadas.Count > 1)
+            {
+                MessageBox.Show("Debe seleccionar una fila");
+                return;
+            }
+            foreach(DataGridViewRow fila in seleccionadas)
+            {
+                var id = fila.Cells[0].Value;
+                var ventana = new EditarDirector(id.ToString());
+                ventana.ShowDialog();
+                ActualizarDirectores();
+            }
         }
     }
 }

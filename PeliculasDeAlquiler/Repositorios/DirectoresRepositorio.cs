@@ -1,5 +1,6 @@
 ﻿using PeliculasDeAlquiler.Helpers;
 using PeliculasDeAlquiler.Modelos;
+using System;
 using System.Data;
 
 namespace PeliculasDeAlquiler.Repositorios
@@ -39,7 +40,51 @@ namespace PeliculasDeAlquiler.Repositorios
         //public bool Eliminar(string directorId) {
         //    string sqltxt = $"DELETE FROM [dbo].[directores] WHERE";
         //}
+        public bool Eliminar(string directorId)
+        {
+            string sqltxt = $"DELETE FROM [dbo].[Directores] WHERE id = {directorId}";
 
-      
+            return _BD.EjecutarSQL(sqltxt);
+        }
+        public Director ObtenerDirector(string directorId)
+        {
+            string sqltxt = $"SELECT * FROM [dbo].[Directores] WHERE id = {directorId}";
+            var tablaTemporal = _BD.consulta(sqltxt);
+            if(tablaTemporal.Rows.Count == 0)
+            {
+                return null;
+            }
+            var director = new Director();
+            foreach(DataRow fila in tablaTemporal.Rows){
+                if (fila.HasErrors)
+                    continue;//no corto el sitio
+                //tratamiento de fechas
+                DateTime fecha = DateTime.MinValue;
+
+                //si lo que esta en al BD se puede parsear a date se lo parsea y almecena en la variable
+                //el ? me dice que si recibo un null no hago nada
+                DateTime.TryParse(fila.ItemArray[3]?.ToString(), out fecha);
+
+                director.Id = int.Parse(fila.ItemArray[0].ToString());//codigo
+                director.Nombre = fila.ItemArray[1].ToString();//nombre
+                director.Nacionalidad = fila.ItemArray[2].ToString();//nacionalidad
+                director.FechaNacimiento = fecha;
+          
+            }return director;
+        }
+        /*public bool Actualizar(Director director)
+        {
+            string sqltxt = $"UPDATE [dbo].[Directores] SET Nombre = '{director.Nombre}',"+
+                $"Nacimiento = '{director.Nacionalidad}',"+
+                $"FechaNacimiento = ´{director.FechaNacimiento.ToString("yyyy-MM-dd")}' WHERE id = ´{director.Id}";
+            return _BD.EjecutarSQL(sqltxt);
+        }*/
+        public bool Actualizar(Director director)
+        {
+            string sqltxt = $"UPDATE [dbo].[Directores] SET Nombre = '{director.Nombre}', Nacionalidad = '{director.Nacionalidad}', FechaNacimiento = '{director.FechaNacimiento.ToString("yyyy-MM-dd")}' WHERE id={director.Id}";
+
+            return _BD.EjecutarSQL(sqltxt);
+        }
+
     }
 }

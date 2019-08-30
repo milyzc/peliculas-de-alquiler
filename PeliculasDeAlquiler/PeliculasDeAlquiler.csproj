@@ -61,6 +61,12 @@
     <Compile Include="Modulos\Directores\DirectoresForm.Designer.cs">
       <DependentUpon>DirectoresForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Modulos\Directores\EditarDirector.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Modulos\Directores\EditarDirector.Designer.cs">
+      <DependentUpon>EditarDirector.cs</DependentUpon>
+    </Compile>
     <Compile Include="Modulos\Directores\NuevoDirector.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -77,6 +83,9 @@
     <EmbeddedResource Include="Modulos\Directores\DirectoresForm.resx">
       <DependentUpon>DirectoresForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Modulos\Directores\EditarDirector.resx">
+      <DependentUpon>EditarDirector.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Modulos\Directores\NuevoDirector.resx">
       <DependentUpon>NuevoDirector.cs</DependentUpon>
     </EmbeddedResource>
@@ -88,6 +97,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -102,6 +112,8 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="Resources\descarga.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

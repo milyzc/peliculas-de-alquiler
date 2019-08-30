@@ -62,9 +62,19 @@ namespace PeliculasDeAlquiler.Modulos.Directores
             }
             
         }
+
+        private void txtNacionalidad_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void NuevoDirector_Load(object sender, EventArgs e)
+        {
+
+        }
         //private void DirectoresForm_FormClosing(object sender, FormClosingEventArgs e) {
         //    _consultarPeliculasForm.Show();
         //}
-        
+
     }
 }
