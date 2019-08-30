@@ -30,7 +30,7 @@ namespace PeliculasDeAlquiler.Modulos.Directores
 
         private void ActualizarDirectores()
         {
-            DgvDirectores.Rows.Clear();
+            dgvDirectores.Rows.Clear();
             var peliculas = _directoresRepositorio.ObtenerDirectoresDT().Rows;
             ActualizarGrilla(peliculas);
         }
@@ -51,7 +51,7 @@ namespace PeliculasDeAlquiler.Modulos.Directores
                     fecha != DateTime.MinValue ? fecha.ToString("dd/MM/yyyy") : null // FechaNacimiento
                 };
 
-                DgvDirectores.Rows.Add(fila);
+                dgvDirectores.Rows.Add(fila);
             }
         }
 
@@ -74,7 +74,50 @@ namespace PeliculasDeAlquiler.Modulos.Directores
 
         private void BtnEliminar_Click(object sender, EventArgs e)
         {
-            // código para borrar un director
+            var seleccionadas = dgvDirectores.SelectedRows;
+            if (seleccionadas.Count == 0 || seleccionadas.Count > 1)
+            {
+                MessageBox.Show("Debe Seleccionar algun director.");
+                return;
+            }
+
+            foreach (DataGridViewRow fila in seleccionadas)
+            {
+                var nombre = fila.Cells[1].Value;
+                var nacionalidad = fila.Cells[2].Value;
+                var id = fila.Cells[0].Value;
+
+                //Caja de texto para confirmar.
+                var confirmacion = MessageBox.Show($"Esta seguro que desea eliminar {nombre}, {nacionalidad}?", "Confirmar Operacion", MessageBoxButtons.YesNo);
+                
+                if (confirmacion.Equals(DialogResult.No))
+                    return;
+
+                if (_directoresRepositorio.Eliminar(id.ToString()))
+                {
+                    MessageBox.Show("Se eliminó correctamente");
+                    ActualizarDirectores();
+                }
+            }
+        }
+
+        private void btnEditar_Click(object sender, EventArgs e)
+        {
+            var seleccion = dgvDirectores.SelectedRows;
+            if (seleccion.Count == 0 || seleccion.Count > 1)
+            {
+                MessageBox.Show("Seleccione un Director a Editar.");
+                return;
+            }
+
+            foreach (DataGridViewRow fila in seleccion)
+            {
+                var id = fila.Cells[0].Value;
+
+                var ventana = new EditarDirectorForm(id.ToString());
+                ventana.ShowDialog();
+                ActualizarDirectores();
+            }
         }
     }
 }

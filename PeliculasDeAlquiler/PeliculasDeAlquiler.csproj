@@ -61,6 +61,12 @@
     <Compile Include="Modulos\Directores\DirectoresForm.Designer.cs">
       <DependentUpon>DirectoresForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Modulos\Directores\EditarDirectorForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Modulos\Directores\EditarDirectorForm.Designer.cs">
+      <DependentUpon>EditarDirectorForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Modulos\Directores\NuevoDirectorForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -76,6 +82,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Modulos\Directores\DirectoresForm.resx">
       <DependentUpon>DirectoresForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modulos\Directores\EditarDirectorForm.resx">
+      <DependentUpon>EditarDirectorForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Modulos\Directores\NuevoDirectorForm.resx">
       <DependentUpon>NuevoDirectorForm.cs</DependentUpon>
