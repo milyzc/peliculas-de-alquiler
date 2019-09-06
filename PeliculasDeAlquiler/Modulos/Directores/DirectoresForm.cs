@@ -42,7 +42,8 @@ namespace PeliculasDeAlquiler.Modulos.Directores
             foreach (Director registro in registros)
             {
 
-                var fila = new string[] {
+                var fila = new string[] 
+                {
                     registro.Id.ToString(), // Codigo
                     registro.Nombre.ToString(), // Nombre
                     registro.Nacionalidad.ToString(), // Nacionalidad
