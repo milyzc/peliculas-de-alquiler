@@ -1,5 +1,6 @@
 ﻿using PeliculasDeAlquiler.Repositorios;
 using System;
+using System.Collections.Generic;
 using System.Data;
 using System.Windows.Forms;
 
@@ -31,11 +32,11 @@ namespace PeliculasDeAlquiler.Modulos.Directores
         private void ActualizarDirectores()
         {
             DgvDirectores.Rows.Clear();
-            var peliculas = _directoresRepositorio.ObtenerDirectoresDT().Rows;
+            var peliculas = _directoresRepositorio.ObtenerDirectoresDT();
             ActualizarGrilla(peliculas);
         }
 
-        private void ActualizarGrilla(DataRowCollection registros)
+        private void ActualizarGrilla(List<Direcor> registros)
         {
             foreach (DataRow registro in registros)
             {
