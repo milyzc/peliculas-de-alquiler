@@ -1,5 +1,7 @@
-﻿using PeliculasDeAlquiler.Repositorios;
+﻿using PeliculasDeAlquiler.Modelos;
+using PeliculasDeAlquiler.Repositorios;
 using System;
+using System.Collections.Generic;
 using System.Data;
 using System.Windows.Forms;
 
@@ -31,24 +33,21 @@ namespace PeliculasDeAlquiler.Modulos.Directores
         private void ActualizarDirectores()
         {
             DgvDirectores.Rows.Clear();
-            var peliculas = _directoresRepositorio.ObtenerDirectoresDT().Rows;
+            var peliculas = _directoresRepositorio.ObtenerDirectoresDT();
             ActualizarGrilla(peliculas);
         }
 
-        private void ActualizarGrilla(DataRowCollection registros)
+        private void ActualizarGrilla(List<Director> registros)
         {
-            foreach (DataRow registro in registros)
+            foreach (Director registro in registros)
             {
-                if (registro.HasErrors)
-                    continue; // no corto el ciclo
-                DateTime fecha = DateTime.MinValue;
-                DateTime.TryParse(registro.ItemArray[3]?.ToString(), out fecha);
 
                 var fila = new string[] {
-                    registro.ItemArray[0].ToString(), // Codigo
-                    registro.ItemArray[1].ToString(), // Nombre
-                    registro.ItemArray[2].ToString(), // Nacionalidad
-                    fecha != DateTime.MinValue ? fecha.ToString("dd/MM/yyyy") : null // FechaNacimiento
+                    registro.Id.ToString(), // Codigo
+                    registro.Nombre.ToString(), // Nombre
+                    registro.Nacionalidad.ToString(), // Nacionalidad
+                    registro.FechaNacimiento!=DateTime.MinValue ? registro.FechaNacimiento.ToString("dd/MM/yyyy"): null
+                    //fecha != DateTime.MinValue ? fecha.ToString("dd/MM/yyyy") : null // FechaNacimiento
                 };
 
                 DgvDirectores.Rows.Add(fila);

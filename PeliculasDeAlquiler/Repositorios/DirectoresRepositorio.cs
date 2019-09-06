@@ -1,6 +1,7 @@
 ﻿using PeliculasDeAlquiler.Helpers;
 using PeliculasDeAlquiler.Modelos;
 using System;
+using System.Collections.Generic;
 using System.Data;
 
 namespace PeliculasDeAlquiler.Repositorios
@@ -19,15 +20,32 @@ namespace PeliculasDeAlquiler.Repositorios
             _BD = new acceso_BD();
         }
 
-        public DataTable ObtenerDirectoresDT()
+        public List<Director> ObtenerDirectoresDT()
         {
             //se define una variable local a la función <sqltxt> del tipo <string> donde en el 
             //momento de su creación se le asigan su contenido, que es el comando SELECT  
             //necesario para poder establecer la veracidad del usuario.
             string sqltxt = "SELECT * FROM directores";
 
-            return _BD.consulta(sqltxt);
+            var tablatemporal = _BD.consulta(sqltxt);
+            var directores = new List<Director>();
+            foreach (DataRow fila in tablatemporal.Rows)
+            {
+                var director = new Director();
+                if (fila.HasErrors)
+                    continue;
+                DateTime fecha = DateTime.MinValue;
+                DateTime.TryParse(fila.ItemArray[3]?.ToString(), out fecha);
+                director.Id = int.Parse(fila.ItemArray[0].ToString());
+                director.Nombre = fila.ItemArray[1].ToString();
+                director.FechaNacimiento = fecha;
+
+                directores.Add(director);
+
+            }
+            return directores;
         }
+
 
         public bool Guardar(Director director)
         {
