@@ -34,7 +34,8 @@ namespace PeliculasDeAlquiler.Modulos.Directores
         {
             TxtNombre.Text = director.Nombre;
             TxtNacionalidad.Text = director.Nacionalidad;
-            DtpFechaNacimiento.Value = director.FechaNacimiento != DateTime.MinValue ? director.FechaNacimiento : DateTime.Today; // para obligarlo a cambiar la fecha en aquellos que no tengan fecha en la BD
+            DtpFechaNacimiento.Value = director.FechaNacimiento != DateTime.MinValue ? 
+                director.FechaNacimiento : DateTime.Today; // para obligarlo a cambiar la fecha en aquellos que no tengan fecha en la BD
         }
 
         private void BtnGuardar_Click(object sender, EventArgs e)
