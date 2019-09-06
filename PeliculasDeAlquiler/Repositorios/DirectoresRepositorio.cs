@@ -2,6 +2,7 @@
 using PeliculasDeAlquiler.Modelos;
 using System.Data;
 
+
 namespace PeliculasDeAlquiler.Repositorios
 {
     public class DirectoresRepositorio
@@ -44,6 +45,6 @@ namespace PeliculasDeAlquiler.Repositorios
             return _BD.EjecutarSQL(sqltxt);
         }
 
-
+        
     }
 }
