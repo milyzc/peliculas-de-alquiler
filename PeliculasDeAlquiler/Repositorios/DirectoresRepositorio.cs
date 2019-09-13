@@ -13,11 +13,11 @@ namespace PeliculasDeAlquiler.Repositorios
         /// <summary>
         /// Solo ciertas ciertas clases tiene acceso a la BD
         /// </summary>
-        private acceso_BD _BD;
+        
 
         public DirectoresRepositorio()
         {
-            _BD = new acceso_BD();
+            
         }
 
         public List<Director> ObtenerDirectoresDT()
@@ -27,7 +27,7 @@ namespace PeliculasDeAlquiler.Repositorios
             //necesario para poder establecer la veracidad del usuario.
             string sqltxt = "SELECT * FROM directores";
 
-            var tablaTemporal =  _BD.consulta(sqltxt);
+            var tablaTemporal = AccesoBD.Singleton().consulta(sqltxt);
 
             var directores = new List<Director>();            
             foreach (DataRow fila in tablaTemporal.Rows)
@@ -59,7 +59,7 @@ namespace PeliculasDeAlquiler.Repositorios
             string sqltxt = $"INSERT [dbo].[Directores] ([Nombre], [Nacionalidad], [FechaNacimiento]) " +
                 $"VALUES ('{director.Nombre}', '{director.Nacionalidad}', '{director.FechaNacimiento.ToString("yyyy-MM-dd")}')";
 
-            return _BD.EjecutarSQL(sqltxt);
+            return AccesoBD.Singleton().EjecutarSQL(sqltxt);
         }
 
         public bool Actualizar(Director director)
@@ -68,21 +68,21 @@ namespace PeliculasDeAlquiler.Repositorios
                 $"Nacionalidad = '{director.Nacionalidad}', " +
                 $"FechaNacimiento = '{director.FechaNacimiento.ToString("yyyy-MM-dd")}' WHERE id={director.Id}";
 
-            return _BD.EjecutarSQL(sqltxt);
+            return AccesoBD.Singleton().EjecutarSQL(sqltxt);
         }
 
         public bool Eliminar(string directorId)
         {
             string sqltxt = $"DELETE FROM [dbo].[Directores] WHERE id = {directorId}";
 
-            return _BD.EjecutarSQL(sqltxt);
+            return AccesoBD.Singleton().EjecutarSQL(sqltxt);
         }
 
 
         public Director ObtenerDirector(string directorId)
         {
             string sqltxt = $"SELECT * FROM [dbo].[Directores] WHERE id = {directorId}";
-            var tablaTemporal = _BD.consulta(sqltxt);
+            var tablaTemporal = AccesoBD.Singleton().consulta(sqltxt);
 
             if (tablaTemporal.Rows.Count == 0)
                 return null;

@@ -10,11 +10,11 @@ namespace PeliculasDeAlquiler.Repositorios
         /// <summary>
         /// Solo ciertas ciertas clases tiene acceso a la BD
         /// </summary>
-        private acceso_BD _BD ;
+        private AccesoBD _BD ;
 
         public PeliculasRepositorio()
         {
-            _BD = new acceso_BD();
+            _BD = AccesoBD.Singleton(); // ver not lazy (on demand)
         }
 
 
