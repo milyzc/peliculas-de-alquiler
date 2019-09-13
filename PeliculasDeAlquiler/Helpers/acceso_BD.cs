@@ -40,9 +40,6 @@ namespace PeliculasDeAlquiler.Helpers
         private readonly string cadena_conexion = "Provider=SQLNCLI11;workstation id=pav1-db.mssql.somee.com;packet size=4096;user id=milizc_SQLLogin_1;pwd=2s9o1yeexo;data source=pav1-db.mssql.somee.com;persist security info=False;initial catalog=pav1-db";
 
 
-
-
-
         //procedimiento privado <conectar> que prepara la conexión con la base de dato
         private void conectar()
         {

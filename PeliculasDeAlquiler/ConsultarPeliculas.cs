@@ -1,4 +1,5 @@
 ﻿using PeliculasDeAlquiler.Modulos.Directores;
+using PeliculasDeAlquiler.Modulos.Peliculas;
 using PeliculasDeAlquiler.Repositorios;
 using System;
 using System.Collections.Generic;
@@ -9,12 +10,14 @@ namespace PeliculasDeAlquiler
 {
     public partial class ConsultarPeliculas : Form
     {
-        PeliculasRepositorio _peliculasRepositorio;        
+        PeliculasRepositorio _peliculasRepositorio;
+        GenerosRepositorio _generosRepositorio;
 
         public ConsultarPeliculas()
         {
             InitializeComponent();
             _peliculasRepositorio = new PeliculasRepositorio();
+            _generosRepositorio = new GenerosRepositorio();
         }
 
         private void ConsultarPeliculas_Load(object sender, EventArgs e)
@@ -55,7 +58,7 @@ namespace PeliculasDeAlquiler
 
         private void ActualizarCombo()
         {
-            var generos = _peliculasRepositorio.ObtenerGenerosDT();
+            var generos = _generosRepositorio.ObtenerGenerosDT();
             CbGeneros.ValueMember = "Id";
             CbGeneros.DisplayMember = "Tipo";
             CbGeneros.DataSource = generos;
@@ -88,6 +91,30 @@ namespace PeliculasDeAlquiler
             var directoresForm = new DirectoresForm(this);
             directoresForm.Show();
             this.Hide(); 
+        }
+
+        private void BtnNuevo_Click(object sender, EventArgs e)
+        {
+            var modal = new NuevaPeliculaForm();
+            modal.ShowDialog();
+        }
+
+        private void BtnEditar_Click(object sender, EventArgs e)
+        {
+            var seleccionadas = DgvPeliculas.SelectedRows;
+            if (seleccionadas.Count == 0 || seleccionadas.Count > 1)
+            {
+                MessageBox.Show("Debe seleccionar una fila");
+                return;
+            }
+            foreach (DataGridViewRow fila in seleccionadas)
+            {
+                var id = fila.Cells[0].Value;
+
+                var ventana = new EditarPeliculaForm(id.ToString());
+                ventana.ShowDialog();
+                ActualizarPeliculas();
+            }
         }
     }
 }

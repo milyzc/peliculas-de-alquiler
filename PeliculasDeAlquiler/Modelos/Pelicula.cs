@@ -7,8 +7,14 @@ namespace PeliculasDeAlquiler.Modelos
     {
         // si no le agrego constructor c# le asocia un constructor por default
         public int Id { get; set; }
+
         public string Titulo { get; set; }
+
         public DateTime FechaLanzamiento { get; set; }
+
+        public Director Director { get; set; }
+
+        public Genero Genero { get; set; }
 
     }
 }

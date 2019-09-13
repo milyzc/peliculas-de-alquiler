@@ -1,4 +1,6 @@
 ﻿using PeliculasDeAlquiler.Helpers;
+using PeliculasDeAlquiler.Modelos;
+using System;
 using System.Data;
 
 namespace PeliculasDeAlquiler.Repositorios
@@ -37,32 +39,49 @@ namespace PeliculasDeAlquiler.Repositorios
             return _BD.consulta(sqltxt);
         }
 
-        public DataTable ObtenerGenerosDT()
+        public DataTable ObtenerPeliculasDTFiltros(string generoId)
         {
-            //se define una variable local a la función <sqltxt> del tipo <string> donde en el 
-            //momento de su creación se le asigan su contenido, que es el comando SELECT  
-            //necesario para poder establecer la veracidad del usuario.
-            string sqltxt = "SELECT * FROM generos";
 
-            //aquí dos acciones. 1)ejecuta el SQL atravéz del objeto <_BD> utilizando la función
-            //<consulta> pasando por parámentro de la función el comando SQL, esta función devuelve una tabla.
-            //2)Devuelve con el comando <return> a travéz de la función <consulta_login> el resultado 
-            //del SQL.
+            string sqltxt = "SELECT * FROM peliculas where GeneroId=" + generoId;
+
             return _BD.consulta(sqltxt);
         }
 
-        public DataTable ObtenerPeliculasDTFiltros(string generoId)
+        public bool Guardar(Pelicula p)
         {
-            //se define una variable local a la función <sqltxt> del tipo <string> donde en el 
-            //momento de su creación se le asigan su contenido, que es el comando SELECT  
-            //necesario para poder establecer la veracidad del usuario.
-            string sqltxt = "SELECT * FROM peliculas where GeneroId=" + generoId;
+            string sqltxt = $"INSERT [dbo].[Peliculas] ([Titulo], [FechaLanzamiento], [GeneroId], [DirectorId]) VALUES ('{p.Titulo}', '{p.FechaLanzamiento.ToString("yyyy-MM-dd")}', {p.Genero.Id},{p.Director.Id})";
 
-            //aquí dos acciones. 1)ejecuta el SQL atravéz del objeto <_BD> utilizando la función
-            //<consulta> pasando por parámentro de la función el comando SQL, esta función devuelve una tabla.
-            //2)Devuelve con el comando <return> a travéz de la función <consulta_login> el resultado 
-            //del SQL.
-            return _BD.consulta(sqltxt);
+            return AccesoBD.Singleton().EjecutarSQL(sqltxt);
+        }
+
+        public Pelicula Obtener(string id)
+        {
+            string sqltxt = $"SELECT * FROM [dbo].[Peliculas] WHERE id = {id}";
+            var tablaTemporal = AccesoBD.Singleton().consulta(sqltxt);
+
+            if (tablaTemporal.Rows.Count == 0)
+                return null;
+
+            var pelicula = new Pelicula();
+            foreach (DataRow fila in tablaTemporal.Rows)
+            {
+                if (fila.HasErrors)
+                    continue; // no corto el ciclo
+
+                // tratamiento de fechas
+                DateTime fecha = DateTime.MinValue;
+
+                // Si lo que esta en la BD de datos se puede parsear a date se lo parsea y almacena en la varaible fecha
+                DateTime.TryParse(fila.ItemArray[2]?.ToString(), out fecha);
+
+                pelicula.Id = int.Parse(fila.ItemArray[0].ToString()); // Codigo
+                pelicula.Titulo = fila.ItemArray[1].ToString();
+                pelicula.FechaLanzamiento = fecha; //
+                pelicula.Genero = new Genero() { Id = int.Parse(fila.ItemArray[3].ToString()) };
+                pelicula.Director = new Director() { Id = int.Parse(fila.ItemArray[4].ToString()) };                
+            }
+
+            return pelicula;
         }
     }
 }

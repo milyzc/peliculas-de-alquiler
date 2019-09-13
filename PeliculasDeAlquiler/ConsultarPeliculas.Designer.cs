@@ -40,6 +40,9 @@
             this.button1 = new System.Windows.Forms.Button();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.directoresToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.BtnEditar = new System.Windows.Forms.Button();
+            this.BtnEliminar = new System.Windows.Forms.Button();
+            this.BtnNuevo = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.DgvPeliculas)).BeginInit();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -145,12 +148,62 @@
             this.directoresToolStripMenuItem.Text = "Directores";
             this.directoresToolStripMenuItem.Click += new System.EventHandler(this.directoresToolStripMenuItem_Click);
             // 
+            // BtnEditar
+            // 
+            this.BtnEditar.BackColor = System.Drawing.Color.Transparent;
+            this.BtnEditar.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("BtnEditar.BackgroundImage")));
+            this.BtnEditar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.BtnEditar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.BtnEditar.FlatAppearance.BorderColor = System.Drawing.Color.Bisque;
+            this.BtnEditar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BtnEditar.ForeColor = System.Drawing.Color.Transparent;
+            this.BtnEditar.Location = new System.Drawing.Point(879, 234);
+            this.BtnEditar.Name = "BtnEditar";
+            this.BtnEditar.Size = new System.Drawing.Size(63, 61);
+            this.BtnEditar.TabIndex = 8;
+            this.BtnEditar.UseVisualStyleBackColor = false;
+            this.BtnEditar.Click += new System.EventHandler(this.BtnEditar_Click);
+            // 
+            // BtnEliminar
+            // 
+            this.BtnEliminar.BackColor = System.Drawing.Color.Transparent;
+            this.BtnEliminar.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("BtnEliminar.BackgroundImage")));
+            this.BtnEliminar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.BtnEliminar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.BtnEliminar.FlatAppearance.BorderColor = System.Drawing.Color.Bisque;
+            this.BtnEliminar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BtnEliminar.ForeColor = System.Drawing.Color.Transparent;
+            this.BtnEliminar.Location = new System.Drawing.Point(739, 234);
+            this.BtnEliminar.Name = "BtnEliminar";
+            this.BtnEliminar.Size = new System.Drawing.Size(69, 59);
+            this.BtnEliminar.TabIndex = 7;
+            this.BtnEliminar.UseVisualStyleBackColor = false;
+            // 
+            // BtnNuevo
+            // 
+            this.BtnNuevo.BackColor = System.Drawing.Color.Transparent;
+            this.BtnNuevo.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("BtnNuevo.BackgroundImage")));
+            this.BtnNuevo.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.BtnNuevo.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.BtnNuevo.FlatAppearance.BorderColor = System.Drawing.Color.Bisque;
+            this.BtnNuevo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BtnNuevo.ForeColor = System.Drawing.Color.Transparent;
+            this.BtnNuevo.Location = new System.Drawing.Point(803, 234);
+            this.BtnNuevo.Name = "BtnNuevo";
+            this.BtnNuevo.Size = new System.Drawing.Size(71, 59);
+            this.BtnNuevo.TabIndex = 6;
+            this.BtnNuevo.UseVisualStyleBackColor = false;
+            this.BtnNuevo.Click += new System.EventHandler(this.BtnNuevo_Click);
+            // 
             // ConsultarPeliculas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Bisque;
             this.ClientSize = new System.Drawing.Size(1097, 701);
+            this.Controls.Add(this.BtnEditar);
+            this.Controls.Add(this.BtnEliminar);
+            this.Controls.Add(this.BtnNuevo);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.CbGeneros);
             this.Controls.Add(this.BtnRefresh);
@@ -181,6 +234,9 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem directoresToolStripMenuItem;
+        private System.Windows.Forms.Button BtnEditar;
+        private System.Windows.Forms.Button BtnEliminar;
+        private System.Windows.Forms.Button BtnNuevo;
     }
 }
 

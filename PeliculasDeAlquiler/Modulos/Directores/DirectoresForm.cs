@@ -33,7 +33,7 @@ namespace PeliculasDeAlquiler.Modulos.Directores
         private void ActualizarDirectores()
         {
             DgvDirectores.Rows.Clear();
-            var peliculas = _directoresRepositorio.ObtenerDirectoresDT();
+            var peliculas = _directoresRepositorio.ObtenerDirectores();
             ActualizarGrilla(peliculas);
         }
 

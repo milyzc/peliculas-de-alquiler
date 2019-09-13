@@ -20,15 +20,16 @@ namespace PeliculasDeAlquiler.Repositorios
             
         }
 
-        public List<Director> ObtenerDirectoresDT()
+        public DataTable ObtenerDirectoresDT()
         {
-            //se define una variable local a la función <sqltxt> del tipo <string> donde en el 
-            //momento de su creación se le asigan su contenido, que es el comando SELECT  
-            //necesario para poder establecer la veracidad del usuario.
             string sqltxt = "SELECT * FROM directores";
 
-            var tablaTemporal = AccesoBD.Singleton().consulta(sqltxt);
+            return AccesoBD.Singleton().consulta(sqltxt);
+        }
 
+        public List<Director> ObtenerDirectores()
+        {
+            var tablaTemporal = ObtenerDirectoresDT();
             var directores = new List<Director>();            
             foreach (DataRow fila in tablaTemporal.Rows)
             {
@@ -49,9 +50,7 @@ namespace PeliculasDeAlquiler.Repositorios
 
                 directores.Add(director);
             }
-
             return directores;
-
         }
 
         public bool Guardar(Director director)
