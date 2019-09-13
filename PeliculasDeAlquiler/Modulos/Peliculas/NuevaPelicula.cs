@@ -3,6 +3,7 @@ using PeliculasDeAlquiler.Modelos;
 using PeliculasDeAlquiler.Repositorios;
 using System;
 using System.Data;
+using System.Data.OleDb;
 using System.Text;
 using System.Windows.Forms;
 
@@ -47,17 +48,47 @@ namespace PeliculasDeAlquiler.Modulos.Peliculas
 
         private void BtnGuardar_Click(object sender, EventArgs e)
         {
-            if (MessageBox.Show("Confirma nueva película", "Confirmación", MessageBoxButtons.OKCancel) == DialogResult.Cancel)
+            if (TxtTitulo.Text == "")
+            {
+                MessageBox.Show("debe ingresar nombre valido");
                 return;
+            }
+            
 
             StringBuilder mensaje = new StringBuilder("La operación ");
             try
             {
                 var pelicula = PrepararPelicula();
-                if (_peliculasRepositorio.Guardar(pelicula))
+                if(pelicula.Director==null)
+                {
+                    mensaje.Clear();
+                    mensaje.Append("debe seleccionar un director");
+                    return;
+                }
+                else {
+                    if (MessageBox.Show("Confirma nueva película", "Confirmación", MessageBoxButtons.OKCancel) == DialogResult.Cancel)
+                    {
+                        mensaje.Append("se cancelo");
+                        return;
+                    }
+                    _peliculasRepositorio.Guardar(pelicula);
                     mensaje.Append("se realizó con exito.");
+                }
+                /*else
+            {
+                if(MessageBox.Show("Confirma nueva película", "Confirmación", MessageBoxButtons.OKCancel) == DialogResult.Cancel)
+                return;
+            }*/
+            }
+            catch(ApplicationException ex)
+            {
+                mensaje.Append($"no se realizo. {ex.Message})");
             }
             catch (InvalidOperationException ex)
+            {
+                mensaje.Append("no se realizó. Hubo un problema en la conexión a la BD");
+            }
+            catch (OleDbException ex)
             {
                 mensaje.Append("no se realizó. Hubo un problema en la conexión a la BD");
             }
@@ -106,6 +137,9 @@ namespace PeliculasDeAlquiler.Modulos.Peliculas
         private Pelicula PrepararPelicula()
         {
             // Agregar validaciones
+            if (director == null)
+               throw new ApplicationException("seleccione director");
+             
             var pelicula = new Pelicula()
             {
                 Titulo = TxtTitulo.Text,
@@ -115,5 +149,6 @@ namespace PeliculasDeAlquiler.Modulos.Peliculas
             };
             return pelicula;
         }
+        
     }
 }
