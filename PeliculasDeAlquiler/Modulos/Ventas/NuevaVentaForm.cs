@@ -50,6 +50,7 @@ namespace PeliculasDeAlquiler.Modulos.Ventas
         {
             var fila = DgvPeliculas.Rows[e.RowIndex];
             int cantidad = 0;
+            
             if(!int.TryParse(fila.Cells["Cantidad"].Value?.ToString(), out cantidad))
             {
                 fila.Cells["Cantidad"].Value = null;
@@ -58,10 +59,18 @@ namespace PeliculasDeAlquiler.Modulos.Ventas
                 return;
             }
             var precioUnitario = decimal.Parse(fila.Cells["PrecioUnitario"].Value.ToString());
-            var subtotal = cantidad * precioUnitario;
-            fila.Cells["subtotal"].Value = subtotal;
-            ActualizarTotal();
-            return;
+            if(int.Parse(fila.Cells["Stock"].Value?.ToString())<cantidad)
+            {
+                MessageBox.Show("Falta de stock");
+                fila.Cells["Cantidad"].Value = null;
+            }
+            else
+            {
+                var subtotal = cantidad * precioUnitario;
+                fila.Cells["subtotal"].Value = subtotal;
+                ActualizarTotal();
+                return;
+            }            
 
             //MessageBox.Show("");
         }
@@ -91,9 +100,20 @@ namespace PeliculasDeAlquiler.Modulos.Ventas
         {
             try
             {
-                // guardar venta con sus detalles y actualizar el stock
+
+                var venta = new Venta()
+                {
+                    Cliente = TxtCliente.Text,
+                    Fecha = DateTime.Today,
+                    DetallesVenta = PreparaDetallesVenta(),
+                    MontoFinal = string.IsNullOrEmpty(TxtTotal.Text) ? 0:decimal.Parse(TxtTotal.Text)
+
+                };
+                venta.Validar();
+                _ventasRepositorio.Guardar(venta);
+                    // guardar venta con sus detalles y actualizar el stock
                 
-                MessageBox.Show("No estoy haciendo nada.");
+                MessageBox.Show("Todo OK");
                 this.Dispose();
             }
             catch (ApplicationException aex)
