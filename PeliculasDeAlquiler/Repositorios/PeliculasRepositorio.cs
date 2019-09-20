@@ -1,6 +1,7 @@
 ﻿using PeliculasDeAlquiler.Helpers;
 using PeliculasDeAlquiler.Modelos;
 using System;
+using System.Collections.Generic;
 using System.Data;
 
 namespace PeliculasDeAlquiler.Repositorios
@@ -37,6 +38,35 @@ namespace PeliculasDeAlquiler.Repositorios
             //2)Devuelve con el comando <return> a travéz de la función <consulta_login> el resultado 
             //del SQL.
             return _BD.consulta(sqltxt);
+        }
+
+        public IList<Pelicula> ObtenerPeliculasParaVenta()
+        {
+            string sqltxt = "SELECT p.Id, p.Titulo, p.GeneroId, g.Tipo as Genero, p.PrecioSugerido, p.Stock, p.DirectorId, p.FechaLanzamiento FROM peliculas p JOIN Generos g on p.GeneroId = g.Id";
+
+            var tmp = _BD.consulta(sqltxt);
+            var peliculas = new List<Pelicula>();            
+            foreach (DataRow fila in tmp.Rows)
+            {                
+                if (fila.HasErrors)
+                    continue; // no corto el ciclo
+
+                var pelicula = new Pelicula();
+                var genero = new Genero()
+                {
+                    Id = int.Parse(fila["GeneroId"].ToString()),
+                    Tipo = fila["Genero"].ToString()
+                };
+                pelicula.Id = int.Parse(fila["Id"].ToString());
+                pelicula.Titulo = fila["Titulo"].ToString();
+                pelicula.Genero = genero;
+                pelicula.AsignarFechaLanzamiento(fila["FechaLanzamiento"]?.ToString());
+                pelicula.AsignarPrecioUnitario(fila["PrecioSugerido"]);
+                pelicula.AsignarStock(fila["Stock"]);
+                pelicula.Director = new Director() { Id = int.Parse(fila["DirectorId"].ToString()) };
+                peliculas.Add(pelicula);
+            }
+            return peliculas;
         }
 
         public DataTable ObtenerPeliculasDTFiltros(string generoId)

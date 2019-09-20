@@ -54,7 +54,7 @@ namespace PeliculasDeAlquiler.Helpers
         }
 
         //procedimiento privado <cerrar> que finaliza la conexión con la base de datos
-        private void cerrar()
+        public void cerrar()
         {
             //cierra la conexión con la base de datos
             _conexion.Close();
@@ -98,6 +98,32 @@ namespace PeliculasDeAlquiler.Helpers
             return filasAfectadas > 0;
         }
 
+        public int EjecutarTransaccion(string comando)
+        {
+            var id = 0;            
+            _cmd.CommandText = comando;
+            
+            if(_cmd.ExecuteNonQuery() > 0)
+            {
+                string consultaGetId = "Select @@Identity";
+                _cmd.CommandText = consultaGetId;
+                id = int.Parse(_cmd.ExecuteScalar()?.ToString());
+            }                
+            return id;
+        }
+
+        public DataTable ConsultaDuranteTransaccion(string comando)
+        {
+
+            _cmd.CommandText = comando;
+            //instancia un objeto <tabla> del tipo DataTable
+            DataTable tabla = new DataTable();
+
+            tabla.Load(_cmd.ExecuteReader());
+
+            //devuelve el valor calculado a través de la función
+            return tabla;
+        }
 
         public bool EjecutarSentenciaPreparadaSQL(string comando)
         {
@@ -111,6 +137,14 @@ namespace PeliculasDeAlquiler.Helpers
             cerrar();
 
             return filasAfectadas > 0;
+        }
+
+        public OleDbTransaction IniciarTransaccion()
+        {
+            conectar();
+            var transaccion = _conexion.BeginTransaction();
+            _cmd.Transaction = transaccion;
+            return transaccion;
         }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using PeliculasDeAlquiler.Modulos.Directores;
 using PeliculasDeAlquiler.Modulos.Peliculas;
+using PeliculasDeAlquiler.Modulos.Ventas;
 using PeliculasDeAlquiler.Repositorios;
 using System;
 using System.Collections.Generic;
@@ -115,6 +116,13 @@ namespace PeliculasDeAlquiler
                 ventana.ShowDialog();
                 ActualizarPeliculas();
             }
+        }
+
+        private void ventasToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var form = new VentasForm(this);
+            form.Show();
+            this.Hide();
         }
     }
 }

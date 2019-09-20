@@ -31,24 +31,22 @@ namespace PeliculasDeAlquiler.Modulos.Directores
         }
 
         private void ActualizarDirectores()
-        {
-            DgvDirectores.Rows.Clear();
+        {            
             var peliculas = _directoresRepositorio.ObtenerDirectores();
             ActualizarGrilla(peliculas);
         }
 
         private void ActualizarGrilla(List<Director> registros)
         {
+            DgvDirectores.Rows.Clear();
             foreach (Director registro in registros)
             {
-
                 var fila = new string[] {
                     registro.Id.ToString(), // Codigo
                     registro.Nombre.ToString(), // Nombre
                     registro.Nacionalidad.ToString(), // Nacionalidad
                     registro.FechaNacimiento != DateTime.MinValue ? registro.FechaNacimiento.ToString("dd/MM/yyyy") : null // FechaNacimiento
                 };
-
                 DgvDirectores.Rows.Add(fila);
             }
         }

@@ -42,5 +42,10 @@ namespace PeliculasDeAlquiler.Modulos.Peliculas
             Utils.Set(ref CmbGeneros, pelicula.Genero.Id);
             Utils.Set(ref LtbDirectores, pelicula.Director.Id);
         }
+
+        private void BtnGuardar_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
