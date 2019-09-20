@@ -48,6 +48,41 @@ namespace PeliculasDeAlquiler.Modulos.Ventas
 
         private void DgvPeliculas_CellEndEdit(object sender, DataGridViewCellEventArgs e)
         {
+            var fila = DgvPeliculas.Rows[e.RowIndex];
+            int cantidad = 0;
+            if(!int.TryParse(fila.Cells["Cantidad"].Value?.ToString(), out cantidad))
+            {
+                fila.Cells["Cantidad"].Value = null;
+                fila.Cells["Subtotal"].Value = null;
+                ActualizarTotal();
+                return;
+            }
+            var precioUnitario = decimal.Parse(fila.Cells["PrecioUnitario"].Value.ToString());
+            var subtotal = cantidad * precioUnitario;
+            fila.Cells["subtotal"].Value = subtotal;
+            ActualizarTotal();
+            return;
+
+            //MessageBox.Show("");
+        }
+
+        private void ActualizarTotal()
+        {
+            var filas = DgvPeliculas.Rows;
+
+            decimal total = 0;
+            foreach(DataGridViewRow fila in filas)
+            {
+                if (fila.Cells["SubTotal"].Value == null)
+                    continue;
+                total += decimal.Parse(fila.Cells["SubTotal"].Value.ToString());
+            }
+            if (total != 0)
+            {
+                TxtTotal.Text = total.ToString();
+            }
+            else
+                TxtTotal.Text = null;
 
         }
 
