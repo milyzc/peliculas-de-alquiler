@@ -20,7 +20,7 @@ namespace PeliculasDeAlquiler.Modulos.Ventas
 
         private void VentasForm_Load(object sender, EventArgs e)
         {
-            ActualizarPeliculasParaVenta();
+            ActualizarPeliculasParaVenta(); // es actualizar ventas
         }
 
         private void ActualizarPeliculasParaVenta()

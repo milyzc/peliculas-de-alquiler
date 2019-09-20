@@ -48,53 +48,17 @@ namespace PeliculasDeAlquiler.Modulos.Ventas
 
         private void DgvPeliculas_CellEndEdit(object sender, DataGridViewCellEventArgs e)
         {
-            var fila = DgvPeliculas.Rows[e.RowIndex];
-            int cantidad = 0;
-            if (!int.TryParse(fila.Cells["Cantidad"].Value?.ToString(), out cantidad))
-            {
-                fila.Cells["Cantidad"].Value = null;
-                fila.Cells["Subtotal"].Value = null;
-                ActualizarTotal();
-                return;
-            }
-            var precioUnitario = decimal.Parse(fila.Cells["PrecioUnitario"].Value.ToString());
-            var subtotal = cantidad * precioUnitario;
-            fila.Cells["Subtotal"].Value = subtotal;
-            ActualizarTotal();
-            return;
+
         }
 
-        private void ActualizarTotal()
-        {
-            var filas = DgvPeliculas.Rows;
-
-            decimal total = 0;
-            foreach (DataGridViewRow fila in filas)
-            {
-                if (fila.Cells["Subtotal"].Value == null)
-                    continue;
-                total += decimal.Parse(fila.Cells["Subtotal"].Value.ToString());
-            }
-            if (total != 0)
-                TxtTotal.Text = total.ToString();
-            else
-                TxtTotal.Text = null;
-        }
 
         private void BtnGuardar_Click(object sender, EventArgs e)
         {
             try
             {
-                var venta = new Venta()
-                {
-                    Cliente = TxtCliente.Text,
-                    Fecha = DateTime.Today,
-                    DetallesVenta = PreparaDetallesVenta(),
-                    MontoFinal = string.IsNullOrEmpty(TxtTotal.Text) ? 0 : decimal.Parse(TxtTotal.Text)
-                };
-                venta.Validar();
-                _ventasRepositorio.Guardar(venta);
-                MessageBox.Show("La operación se realizó con exito");
+                // guardar venta con sus detalles y actualizar el stock
+                
+                MessageBox.Show("No estoy haciendo nada.");
                 this.Dispose();
             }
             catch (ApplicationException aex)
