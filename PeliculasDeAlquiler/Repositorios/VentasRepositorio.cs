@@ -48,19 +48,23 @@ namespace PeliculasDeAlquiler.Repositorios
             {
                 try
                 {
-                    string sqltxt = $"INSERT [dbo].[Ventas] ([Cliente], [FechaVenta], [MontoFinal]) VALUES ('{v.Cliente}', '{v.FechaVenta()}', {v.MontoFinal})";
+                    string sqltxt = $"INSERT [dbo].[Ventas] ([Cliente], [FechaVenta], [MontoFinal])" +
+                        $" VALUES ('{v.Cliente}', '{v.FechaVenta()}', {v.MontoFinal})";
                     v.Id = AccesoBD.Singleton().EjecutarTransaccion(sqltxt);
                     if (v.Id == 0)
                         throw new ApplicationException();
 
                     foreach (var d in v.DetallesVenta)
                     {
-                        sqltxt = $"INSERT [dbo].[DetallesDeVentas] ([VentaId], [PeliculaId], [Cantidad], [PrecioUnitario]) VALUES ({v.Id}, {d.Pelicula.Id}, {d.Cantidad}, {d.PrecioUnitario})";
+                        sqltxt = $"INSERT [dbo].[DetallesDeVentas] " +
+                            $"([VentaId], [PeliculaId], [Cantidad], [PrecioUnitario]) " +
+                            $"VALUES ({v.Id}, {d.Pelicula.Id}, {d.Cantidad}, {d.PrecioUnitario})";
                         AccesoBD.Singleton().EjecutarTransaccion(sqltxt);
 
                         sqltxt = $"SELECT stock FROM peliculas WHERE id={d.Pelicula.Id}";
 
-                        var stock = int.Parse(AccesoBD.Singleton().ConsultaDuranteTransaccion(sqltxt).Rows[0]["stock"].ToString());
+                        var stock = 
+                            int.Parse(AccesoBD.Singleton().ConsultaDuranteTransaccion(sqltxt).Rows[0]["stock"].ToString());
 
                         sqltxt = $"UPDATE [dbo].[Peliculas] SET Stock = '{stock - d.Cantidad}' WHERE id={d.Pelicula.Id}";
                         AccesoBD.Singleton().EjecutarTransaccion(sqltxt);

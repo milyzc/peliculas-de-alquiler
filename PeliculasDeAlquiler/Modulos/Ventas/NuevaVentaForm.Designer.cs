@@ -28,16 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.DgvPeliculas = new System.Windows.Forms.DataGridView();
-            this.TxtCliente = new System.Windows.Forms.TextBox();
-            this.LblCliente = new System.Windows.Forms.Label();
-            this.BtnCancelar = new System.Windows.Forms.Button();
-            this.BtnGuardar = new System.Windows.Forms.Button();
-            this.LblFecha = new System.Windows.Forms.Label();
-            this.LblFechaHoy = new System.Windows.Forms.Label();
             this.Codigo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Titulo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.FechaLanzamiento = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -47,6 +41,12 @@
             this.Stock = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Cantidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Subtotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TxtCliente = new System.Windows.Forms.TextBox();
+            this.LblCliente = new System.Windows.Forms.Label();
+            this.BtnCancelar = new System.Windows.Forms.Button();
+            this.BtnGuardar = new System.Windows.Forms.Button();
+            this.LblFecha = new System.Windows.Forms.Label();
+            this.LblFechaHoy = new System.Windows.Forms.Label();
             this.TxtTotal = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.DgvPeliculas)).BeginInit();
@@ -73,6 +73,70 @@
             this.DgvPeliculas.Size = new System.Drawing.Size(956, 402);
             this.DgvPeliculas.TabIndex = 1;
             this.DgvPeliculas.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgvPeliculas_CellEndEdit);
+            // 
+            // Codigo
+            // 
+            this.Codigo.HeaderText = "Código";
+            this.Codigo.Name = "Codigo";
+            this.Codigo.ReadOnly = true;
+            this.Codigo.Visible = false;
+            // 
+            // Titulo
+            // 
+            this.Titulo.HeaderText = "Título";
+            this.Titulo.Name = "Titulo";
+            this.Titulo.ReadOnly = true;
+            // 
+            // FechaLanzamiento
+            // 
+            this.FechaLanzamiento.HeaderText = "Fecha de lanzamiento";
+            this.FechaLanzamiento.Name = "FechaLanzamiento";
+            this.FechaLanzamiento.ReadOnly = true;
+            // 
+            // Genero
+            // 
+            this.Genero.HeaderText = "Genero";
+            this.Genero.Name = "Genero";
+            this.Genero.ReadOnly = true;
+            // 
+            // GeneroId
+            // 
+            this.GeneroId.HeaderText = "GeneroId";
+            this.GeneroId.Name = "GeneroId";
+            this.GeneroId.ReadOnly = true;
+            this.GeneroId.Visible = false;
+            // 
+            // PrecioUnitario
+            // 
+            dataGridViewCellStyle1.Format = "N2";
+            dataGridViewCellStyle1.NullValue = null;
+            this.PrecioUnitario.DefaultCellStyle = dataGridViewCellStyle1;
+            this.PrecioUnitario.HeaderText = "Precio unitario";
+            this.PrecioUnitario.Name = "PrecioUnitario";
+            this.PrecioUnitario.ReadOnly = true;
+            // 
+            // Stock
+            // 
+            this.Stock.HeaderText = "Stock";
+            this.Stock.Name = "Stock";
+            this.Stock.ReadOnly = true;
+            // 
+            // Cantidad
+            // 
+            dataGridViewCellStyle2.Format = "N0";
+            dataGridViewCellStyle2.NullValue = null;
+            this.Cantidad.DefaultCellStyle = dataGridViewCellStyle2;
+            this.Cantidad.HeaderText = "Cantidad";
+            this.Cantidad.Name = "Cantidad";
+            // 
+            // Subtotal
+            // 
+            dataGridViewCellStyle3.Format = "N2";
+            dataGridViewCellStyle3.NullValue = null;
+            this.Subtotal.DefaultCellStyle = dataGridViewCellStyle3;
+            this.Subtotal.HeaderText = "Subtotal";
+            this.Subtotal.Name = "Subtotal";
+            this.Subtotal.ReadOnly = true;
             // 
             // TxtCliente
             // 
@@ -142,70 +206,6 @@
             this.LblFechaHoy.Size = new System.Drawing.Size(0, 17);
             this.LblFechaHoy.TabIndex = 11;
             this.LblFechaHoy.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            // 
-            // Codigo
-            // 
-            this.Codigo.HeaderText = "Código";
-            this.Codigo.Name = "Codigo";
-            this.Codigo.ReadOnly = true;
-            this.Codigo.Visible = false;
-            // 
-            // Titulo
-            // 
-            this.Titulo.HeaderText = "Título";
-            this.Titulo.Name = "Titulo";
-            this.Titulo.ReadOnly = true;
-            // 
-            // FechaLanzamiento
-            // 
-            this.FechaLanzamiento.HeaderText = "Fecha de lanzamiento";
-            this.FechaLanzamiento.Name = "FechaLanzamiento";
-            this.FechaLanzamiento.ReadOnly = true;
-            // 
-            // Genero
-            // 
-            this.Genero.HeaderText = "Genero";
-            this.Genero.Name = "Genero";
-            this.Genero.ReadOnly = true;
-            // 
-            // GeneroId
-            // 
-            this.GeneroId.HeaderText = "GeneroId";
-            this.GeneroId.Name = "GeneroId";
-            this.GeneroId.ReadOnly = true;
-            this.GeneroId.Visible = false;
-            // 
-            // PrecioUnitario
-            // 
-            dataGridViewCellStyle4.Format = "N2";
-            dataGridViewCellStyle4.NullValue = null;
-            this.PrecioUnitario.DefaultCellStyle = dataGridViewCellStyle4;
-            this.PrecioUnitario.HeaderText = "Precio unitario";
-            this.PrecioUnitario.Name = "PrecioUnitario";
-            this.PrecioUnitario.ReadOnly = true;
-            // 
-            // Stock
-            // 
-            this.Stock.HeaderText = "Stock";
-            this.Stock.Name = "Stock";
-            this.Stock.ReadOnly = true;
-            // 
-            // Cantidad
-            // 
-            dataGridViewCellStyle5.Format = "N0";
-            dataGridViewCellStyle5.NullValue = null;
-            this.Cantidad.DefaultCellStyle = dataGridViewCellStyle5;
-            this.Cantidad.HeaderText = "Cantidad";
-            this.Cantidad.Name = "Cantidad";
-            // 
-            // Subtotal
-            // 
-            dataGridViewCellStyle6.Format = "N2";
-            dataGridViewCellStyle6.NullValue = null;
-            this.Subtotal.DefaultCellStyle = dataGridViewCellStyle6;
-            this.Subtotal.HeaderText = "Subtotal";
-            this.Subtotal.Name = "Subtotal";
-            this.Subtotal.ReadOnly = true;
             // 
             // TxtTotal
             // 
