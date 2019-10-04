@@ -40,6 +40,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.TxtTitulo = new System.Windows.Forms.TextBox();
             this.LblTitulo = new System.Windows.Forms.Label();
+            this.CkInactivo = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
             // BtnQuitarSeleccion
@@ -58,6 +59,7 @@
             this.BtnQuitarSeleccion.TabStop = false;
             this.BtnQuitarSeleccion.Text = "X";
             this.BtnQuitarSeleccion.UseVisualStyleBackColor = false;
+            this.BtnQuitarSeleccion.Click += new System.EventHandler(this.BtnQuitarSeleccion_Click);
             // 
             // label3
             // 
@@ -84,6 +86,7 @@
             this.LtbDirectores.Name = "LtbDirectores";
             this.LtbDirectores.Size = new System.Drawing.Size(435, 100);
             this.LtbDirectores.TabIndex = 22;
+            this.LtbDirectores.SelectedIndexChanged += new System.EventHandler(this.LtbDirectores_SelectedIndexChanged);
             // 
             // BtnCancelar
             // 
@@ -171,12 +174,23 @@
             this.LblTitulo.Text = "Título";
             this.LblTitulo.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
+            // CkInactivo
+            // 
+            this.CkInactivo.AutoSize = true;
+            this.CkInactivo.Location = new System.Drawing.Point(188, 399);
+            this.CkInactivo.Name = "CkInactivo";
+            this.CkInactivo.Size = new System.Drawing.Size(78, 21);
+            this.CkInactivo.TabIndex = 26;
+            this.CkInactivo.Text = "Inactivo";
+            this.CkInactivo.UseVisualStyleBackColor = true;
+            // 
             // EditarPeliculaForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Bisque;
             this.ClientSize = new System.Drawing.Size(641, 492);
+            this.Controls.Add(this.CkInactivo);
             this.Controls.Add(this.BtnQuitarSeleccion);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.TxtDirector);
@@ -191,6 +205,7 @@
             this.Controls.Add(this.LblTitulo);
             this.Name = "EditarPeliculaForm";
             this.Text = "EditarPeliculaForm";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.EditarPeliculaForm_FormClosing);
             this.Load += new System.EventHandler(this.EditarPeliculaForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -211,5 +226,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox TxtTitulo;
         private System.Windows.Forms.Label LblTitulo;
+        private System.Windows.Forms.CheckBox CkInactivo;
     }
 }

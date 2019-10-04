@@ -47,7 +47,8 @@ namespace PeliculasDeAlquiler
                     pelicula.ItemArray[1].ToString(),
                     pelicula.ItemArray[2].ToString(),
                     pelicula.ItemArray[3].ToString(),
-                    pelicula.ItemArray[4].ToString()
+                    pelicula.ItemArray[4].ToString(),
+                    pelicula.ItemArray[7].ToString(),
                 };
 
                 DgvPeliculas.Rows.Add(fila);

@@ -40,6 +40,7 @@
             this.TxtDirector = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.BtnQuitarSeleccion = new System.Windows.Forms.Button();
+            this.CkInactivo = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
             // TxtTitulo
@@ -106,7 +107,7 @@
             this.BtnCancelar.FlatAppearance.BorderSize = 0;
             this.BtnCancelar.Font = new System.Drawing.Font("Marlett", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BtnCancelar.ForeColor = System.Drawing.Color.Transparent;
-            this.BtnCancelar.Location = new System.Drawing.Point(497, 436);
+            this.BtnCancelar.Location = new System.Drawing.Point(494, 476);
             this.BtnCancelar.Margin = new System.Windows.Forms.Padding(0);
             this.BtnCancelar.Name = "BtnCancelar";
             this.BtnCancelar.Size = new System.Drawing.Size(131, 56);
@@ -123,7 +124,7 @@
             this.BtnGuardar.FlatAppearance.BorderSize = 0;
             this.BtnGuardar.Font = new System.Drawing.Font("Marlett", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BtnGuardar.ForeColor = System.Drawing.Color.Transparent;
-            this.BtnGuardar.Location = new System.Drawing.Point(352, 436);
+            this.BtnGuardar.Location = new System.Drawing.Point(349, 476);
             this.BtnGuardar.Margin = new System.Windows.Forms.Padding(0);
             this.BtnGuardar.Name = "BtnGuardar";
             this.BtnGuardar.Size = new System.Drawing.Size(131, 56);
@@ -177,12 +178,23 @@
             this.BtnQuitarSeleccion.UseVisualStyleBackColor = false;
             this.BtnQuitarSeleccion.Click += new System.EventHandler(this.button1_Click);
             // 
+            // CkInactivo
+            // 
+            this.CkInactivo.AutoSize = true;
+            this.CkInactivo.Location = new System.Drawing.Point(193, 428);
+            this.CkInactivo.Name = "CkInactivo";
+            this.CkInactivo.Size = new System.Drawing.Size(78, 21);
+            this.CkInactivo.TabIndex = 14;
+            this.CkInactivo.Text = "Inactivo";
+            this.CkInactivo.UseVisualStyleBackColor = true;
+            // 
             // NuevaPeliculaForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Bisque;
-            this.ClientSize = new System.Drawing.Size(655, 513);
+            this.ClientSize = new System.Drawing.Size(651, 541);
+            this.Controls.Add(this.CkInactivo);
             this.Controls.Add(this.BtnQuitarSeleccion);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.TxtDirector);
@@ -217,5 +229,6 @@
         private System.Windows.Forms.TextBox TxtDirector;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button BtnQuitarSeleccion;
+        private System.Windows.Forms.CheckBox CkInactivo;
     }
 }

@@ -63,5 +63,12 @@ namespace PeliculasDeAlquiler.Modulos.Alquileres
         {
             _consultarPeliculasForm.Show();
         }
+
+        private void BtnNuevo_Click(object sender, EventArgs e)
+        {
+            var modal = new NuevoAlquilerForm();
+            modal.ShowDialog();
+            ActualizarGrilla();
+        }
     }
 }

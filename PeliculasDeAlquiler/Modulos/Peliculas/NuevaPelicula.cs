@@ -51,30 +51,35 @@ namespace PeliculasDeAlquiler.Modulos.Peliculas
                 return;
 
             StringBuilder mensaje = new StringBuilder("La operación ");
+            var exito = false;
             try
             {
                 var pelicula = PrepararPelicula();
                 if (_peliculasRepositorio.Guardar(pelicula))
+                {
                     mensaje.Append("se realizó con exito.");
+                    exito = true;
+                }
             }
-            catch (InvalidOperationException ex)
+            catch (InvalidOperationException)
             {
                 mensaje.Append("no se realizó. Hubo un problema en la conexión a la BD");
             }
-            catch (Exception exc)
+            catch (Exception)
             {
                 mensaje.Append("no se realizó. Ops. Hubo un problema inesperado.");
             }
             finally
             {
                 MessageBox.Show(mensaje.ToString());
+                if (exito)
+                    Dispose();
             }
 
         }
 
         private void BtnCancelar_Click(object sender, EventArgs e)
         {
-            if(MessageBox.Show("Está seguro que desea salir?", "Salir", MessageBoxButtons.OKCancel) == DialogResult.OK)
                 Dispose();
         }
 
@@ -111,7 +116,8 @@ namespace PeliculasDeAlquiler.Modulos.Peliculas
                 Titulo = TxtTitulo.Text,
                 FechaLanzamiento = DtpFechaLanzamiento.Value.Date,
                 Director = director,
-                Genero = new Genero() { Id = int.Parse(CmbGeneros.SelectedValue.ToString()) }
+                Genero = new Genero() { Id = int.Parse(CmbGeneros.SelectedValue.ToString()) },
+                Activo = !CkInactivo.Checked
             };
             return pelicula;
         }

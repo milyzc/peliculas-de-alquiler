@@ -42,7 +42,7 @@ namespace PeliculasDeAlquiler.Repositorios
 
         public IList<Pelicula> ObtenerPeliculasParaVenta()
         {
-            string sqltxt = "SELECT p.Id, p.Titulo, p.GeneroId, g.Tipo as Genero, p.PrecioSugerido, p.Stock, p.DirectorId, p.FechaLanzamiento FROM peliculas p JOIN Generos g on p.GeneroId = g.Id";
+            string sqltxt = "SELECT p.Id, p.Titulo, p.GeneroId, g.Tipo as Genero, p.PrecioSugerido, p.Stock, p.DirectorId, p.FechaLanzamiento FROM peliculas p JOIN Generos g on p.GeneroId = g.Id WHERE p.activo=1";
 
             var tmp = _BD.consulta(sqltxt);
             var peliculas = new List<Pelicula>();            
@@ -79,7 +79,14 @@ namespace PeliculasDeAlquiler.Repositorios
 
         public bool Guardar(Pelicula p)
         {
-            string sqltxt = $"INSERT [dbo].[Peliculas] ([Titulo], [FechaLanzamiento], [GeneroId], [DirectorId]) VALUES ('{p.Titulo}', '{p.FechaLanzamiento.ToString("yyyy-MM-dd")}', {p.Genero.Id},{p.Director.Id})";
+            string sqltxt = $"INSERT [dbo].[Peliculas] ([Titulo], [FechaLanzamiento], [GeneroId], [DirectorId], [Activo]) VALUES ('{p.Titulo}', '{p.FechaLanzamiento.ToString("yyyy-MM-dd")}', {p.Genero.Id},{p.Director.Id}, {UtilsDB.GetBit(p.Activo)})";
+
+            return AccesoBD.Singleton().EjecutarSQL(sqltxt);
+        }
+
+        public bool Actualizar(Pelicula p)
+        {
+            string sqltxt = $"UPDATE [dbo].[Peliculas] SET Titulo = '{p.Titulo}', FechaLanzamiento = '{p.FechaLanzamiento.ToString("yyyy-MM-dd")}', GeneroId = {p.Genero.Id}, DirectorId = {p.Director.Id}, Activo = {UtilsDB.GetBit(p.Activo)} WHERE Id = {p.Id}";
 
             return AccesoBD.Singleton().EjecutarSQL(sqltxt);
         }
@@ -108,7 +115,8 @@ namespace PeliculasDeAlquiler.Repositorios
                 pelicula.Titulo = fila.ItemArray[1].ToString();
                 pelicula.FechaLanzamiento = fecha; //
                 pelicula.Genero = new Genero() { Id = int.Parse(fila.ItemArray[3].ToString()) };
-                pelicula.Director = new Director() { Id = int.Parse(fila.ItemArray[4].ToString()) };                
+                pelicula.Director = new Director() { Id = int.Parse(fila.ItemArray[4].ToString()) };
+                pelicula.Activo = (bool) fila.ItemArray[7];
             }
 
             return pelicula;

@@ -20,6 +20,24 @@ namespace PeliculasDeAlquiler.Modelos
 
         public string Cliente { get; set; }
 
+        public void Validar()
+        {
+            if (string.IsNullOrEmpty(Cliente))
+                throw new ApplicationException("El cliente es requerido");
+            if (FechaDesde == DateTime.MinValue || FechaDesde.Ticks < DateTime.Today.Ticks)
+                throw new ApplicationException("Fecha desde inválida");
+            if (FechaHasta == DateTime.MinValue || FechaHasta.Ticks < DateTime.Today.Ticks)
+                throw new ApplicationException("Fecha hasta inválida");
+            if (DetallesAlquileres == null || DetallesAlquileres.Count == 0)
+                throw new ApplicationException("Al menos se requiere una película");
+            else
+                foreach (var da in DetallesAlquileres)
+                    da.Validar();
+            if (MontoFinal == 0)
+                throw new ApplicationException("Al menos se requiere una película");
+        }
+
+
         public void AsignarFechaDesde(string valor)
         {
             DateTime fecha = DateTime.MinValue;

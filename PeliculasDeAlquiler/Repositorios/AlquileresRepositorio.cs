@@ -39,5 +39,49 @@ namespace PeliculasDeAlquiler.Repositorios
             }
             return alquileres;
         }
+
+        public void Guardar(Alquiler v)
+        {
+            using (var tx = AccesoBD.Singleton().IniciarTransaccion())
+            {
+                try
+                {
+                    string sqltxt = $"INSERT [dbo].[Alquileres] ([Cliente], [FechaDesde], [FechaHasta], [MontoFinal])" +
+                        $" VALUES ('{v.Cliente}', '{UtilsDB.GetFecha(v.FechaDesde)}', '{UtilsDB.GetFecha(v.FechaHasta)}', {v.MontoFinal})";
+                    v.Id = AccesoBD.Singleton().EjecutarTransaccion(sqltxt);
+                    if (v.Id == 0)
+                        throw new ApplicationException();
+
+                    foreach (var d in v.DetallesAlquileres)
+                    {
+                        sqltxt = $"INSERT [dbo].[DetallesDeAlquiler] " +
+                            $"([AlquilerId], [PeliculaId], [Precio], [Observaciones]) " +
+                            $"VALUES ({v.Id}, {d.Pelicula.Id}, {d.PrecioUnitario}, '{d.Observaciones}')";
+                        AccesoBD.Singleton().EjecutarTransaccion(sqltxt);
+
+                        sqltxt = $"SELECT stock FROM peliculas WHERE id={d.Pelicula.Id}";
+
+                        var stock =
+                            int.Parse(AccesoBD.Singleton().ConsultaDuranteTransaccion(sqltxt).Rows[0]["stock"].ToString());
+
+                        sqltxt = $"UPDATE [dbo].[Peliculas] SET Stock = '{stock - 1}' WHERE id={d.Pelicula.Id}"; //solo se alquila de a una pelicula
+                        AccesoBD.Singleton().EjecutarTransaccion(sqltxt);
+                    }
+
+                    tx.Commit();
+                }
+                catch (Exception ex)
+                {
+                    tx.Rollback();
+                    throw new ApplicationException("No se pudo realizar la operación.");
+                }
+                finally
+                {
+                    AccesoBD.Singleton().cerrar();
+                }
+            }
+
+        }
+
     }
 }

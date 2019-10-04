@@ -20,6 +20,8 @@ namespace PeliculasDeAlquiler.Modelos
 
         public int? Stock { get; set; }
 
+        public bool Activo { get; set; }
+
 
         public string MostrarFechaLanzamiento()
         {

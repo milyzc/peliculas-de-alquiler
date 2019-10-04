@@ -53,6 +53,7 @@
     </Compile>
     <Compile Include="Helpers\acceso_BD.cs" />
     <Compile Include="Helpers\Utils.cs" />
+    <Compile Include="Helpers\UtilsDB.cs" />
     <Compile Include="Modelos\Alquiler.cs" />
     <Compile Include="Modelos\DetalleAlquiler.cs" />
     <Compile Include="Modelos\DetalleVenta.cs" />
@@ -65,6 +66,12 @@
     </Compile>
     <Compile Include="Modulos\Alquileres\AlquileresForm.Designer.cs">
       <DependentUpon>AlquileresForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Modulos\Alquileres\NuevoAlquilerForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Modulos\Alquileres\NuevoAlquilerForm.Designer.cs">
+      <DependentUpon>NuevoAlquilerForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Modulos\Directores\DirectoresForm.cs">
       <SubType>Form</SubType>
@@ -121,6 +128,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Modulos\Alquileres\AlquileresForm.resx">
       <DependentUpon>AlquileresForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modulos\Alquileres\NuevoAlquilerForm.resx">
+      <DependentUpon>NuevoAlquilerForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Modulos\Directores\DirectoresForm.resx">
       <DependentUpon>DirectoresForm.cs</DependentUpon>
