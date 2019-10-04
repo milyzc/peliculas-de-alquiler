@@ -53,11 +53,25 @@
     </Compile>
     <Compile Include="Helpers\acceso_BD.cs" />
     <Compile Include="Helpers\Utils.cs" />
+    <Compile Include="Modelos\Alquiler.cs" />
+    <Compile Include="Modelos\DetalleAlquiler.cs" />
     <Compile Include="Modelos\DetalleVenta.cs" />
     <Compile Include="Modelos\Director.cs" />
     <Compile Include="Modelos\Genero.cs" />
     <Compile Include="Modelos\Pelicula.cs" />
     <Compile Include="Modelos\Venta.cs" />
+    <Compile Include="Modulos\Alquileres\AlquileresForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Modulos\Alquileres\AlquileresForm.Designer.cs">
+      <DependentUpon>AlquileresForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Modulos\Alquileres\NuevoAlquilerForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Modulos\Alquileres\NuevoAlquilerForm.Designer.cs">
+      <DependentUpon>NuevoAlquilerForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Modulos\Directores\DirectoresForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -102,6 +116,7 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositorios\AlquileresRepositorio.cs" />
     <Compile Include="Repositorios\DirectoresRepositorio.cs" />
     <Compile Include="Repositorios\GenerosRepositorio.cs" />
     <Compile Include="Repositorios\PeliculasRepositorio.cs" />
@@ -109,6 +124,9 @@
     <Compile Include="Servicios\VentasService.cs" />
     <EmbeddedResource Include="ConsultarPeliculas.resx">
       <DependentUpon>ConsultarPeliculas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modulos\Alquileres\AlquileresForm.resx">
+      <DependentUpon>AlquileresForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Modulos\Directores\DirectoresForm.resx">
       <DependentUpon>DirectoresForm.cs</DependentUpon>

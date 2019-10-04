@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Windows.Forms;
+using PeliculasDeAlquiler.Modulos.Alquileres;
 
 namespace PeliculasDeAlquiler
 {
@@ -121,6 +122,13 @@ namespace PeliculasDeAlquiler
         private void ventasToolStripMenuItem_Click(object sender, EventArgs e)
         {
             var form = new VentasForm(this);
+            form.Show();
+            this.Hide();
+        }
+
+        private void toolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            var form = new AlquileresForm();
             form.Show();
             this.Hide();
         }
