@@ -37,7 +37,6 @@
             this.directoresToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ventasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.BtnEditar = new System.Windows.Forms.Button();
-            this.BtnEliminar = new System.Windows.Forms.Button();
             this.BtnNuevo = new System.Windows.Forms.Button();
             this.resportesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.alquileresToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -149,21 +148,6 @@
             this.BtnEditar.UseVisualStyleBackColor = false;
             this.BtnEditar.Click += new System.EventHandler(this.BtnEditar_Click);
             // 
-            // BtnEliminar
-            // 
-            this.BtnEliminar.BackColor = System.Drawing.Color.Transparent;
-            this.BtnEliminar.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("BtnEliminar.BackgroundImage")));
-            this.BtnEliminar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.BtnEliminar.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.BtnEliminar.FlatAppearance.BorderColor = System.Drawing.Color.Bisque;
-            this.BtnEliminar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.BtnEliminar.ForeColor = System.Drawing.Color.Transparent;
-            this.BtnEliminar.Location = new System.Drawing.Point(700, 59);
-            this.BtnEliminar.Name = "BtnEliminar";
-            this.BtnEliminar.Size = new System.Drawing.Size(69, 59);
-            this.BtnEliminar.TabIndex = 7;
-            this.BtnEliminar.UseVisualStyleBackColor = false;
-            // 
             // BtnNuevo
             // 
             this.BtnNuevo.BackColor = System.Drawing.Color.Transparent;
@@ -237,7 +221,6 @@
             this.BackColor = System.Drawing.Color.Bisque;
             this.ClientSize = new System.Drawing.Size(989, 510);
             this.Controls.Add(this.BtnEditar);
-            this.Controls.Add(this.BtnEliminar);
             this.Controls.Add(this.BtnNuevo);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.CbGeneros);
@@ -265,7 +248,6 @@
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem directoresToolStripMenuItem;
         private System.Windows.Forms.Button BtnEditar;
-        private System.Windows.Forms.Button BtnEliminar;
         private System.Windows.Forms.Button BtnNuevo;
         private System.Windows.Forms.ToolStripMenuItem ventasToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem alquileresToolStripMenuItem;
