@@ -1,4 +1,5 @@
-﻿using PeliculasDeAlquiler.Modulos.Directores;
+﻿using PeliculasDeAlquiler.Modulos.Alquileres;
+using PeliculasDeAlquiler.Modulos.Directores;
 using PeliculasDeAlquiler.Modulos.Peliculas;
 using PeliculasDeAlquiler.Modulos.Ventas;
 using PeliculasDeAlquiler.Repositorios;
@@ -121,6 +122,13 @@ namespace PeliculasDeAlquiler
         private void ventasToolStripMenuItem_Click(object sender, EventArgs e)
         {
             var form = new VentasForm(this);
+            form.Show();
+            this.Hide();
+        }
+
+        private void alquileresToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var form = new AlquileresForm(this);
             form.Show();
             this.Hide();
         }
